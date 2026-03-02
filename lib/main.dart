@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'core/theme/app_theme.dart';
 import 'core/constants/app_constants.dart';
-import 'widgets/text/text_widgets.dart';
+import 'screens/login/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,51 +16,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: AppConstants.appName,
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
-      home: const MyHomePage(title: AppConstants.appName),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: AppBarTitle(widget.title)),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const BodyMedium('You have pushed the button this many times:'),
-            const SizedBox(height: 8),
-            HeadlineMedium('$_counter'),
-          ],
-        ),
+      theme: AppTheme.lightTheme.copyWith(
+        textTheme: GoogleFonts.poppinsTextTheme(AppTheme.lightTheme.textTheme),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      themeMode: ThemeMode.light,
+      home: const LoginScreen(),
     );
   }
 }

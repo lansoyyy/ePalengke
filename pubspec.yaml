@@ -34,6 +34,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -63,52 +64,4 @@ flutter:
     - assets/icons/
     - assets/fonts/
 
-  # Fonts
-  fonts:
-    # Poppins Font Family
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Poppins-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Poppins-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Poppins-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Poppins-ExtraBold.ttf
-          weight: 800
-        - asset: assets/fonts/Poppins-Italic.ttf
-          style: italic
-        - asset: assets/fonts/Poppins-MediumItalic.ttf
-          weight: 500
-          style: italic
-        - asset: assets/fonts/Poppins-SemiBoldItalic.ttf
-          weight: 600
-          style: italic
-        - asset: assets/fonts/Poppins-BoldItalic.ttf
-          weight: 700
-          style: italic
-
-    # Inter Font Family
-    - family: Inter
-      fonts:
-        - asset: assets/fonts/Inter-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Inter-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Inter-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Inter-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Inter-Italic.ttf
-          style: italic
-        - asset: assets/fonts/Inter-MediumItalic.ttf
-          weight: 500
-          style: italic
-        - asset: assets/fonts/Inter-SemiBoldItalic.ttf
-          weight: 600
-          style: italic
-        - asset: assets/fonts/Inter-BoldItalic.ttf
-          weight: 700
-          style: italic
+  # Fonts are provided via google_fonts package
