@@ -536,7 +536,7 @@ class _ProductCard extends StatelessWidget {
           // Info section
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -594,7 +594,6 @@ class _ProductCard extends StatelessWidget {
                     child: Container(
                       width: double.infinity,
                       height: 34,
-                      margin: const EdgeInsets.only(bottom: 10),
                       decoration: BoxDecoration(
                         color: const Color(0xFFF3F4F6),
                         borderRadius: BorderRadius.circular(8),
