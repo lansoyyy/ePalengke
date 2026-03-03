@@ -627,10 +627,12 @@ class _ProductCard extends StatelessWidget {
     final n = name.toLowerCase();
     if (n.contains('chicken')) return '🍗';
     if (n.contains('onion')) return '🧅';
-    if (n.contains('tilapia') || n.contains('bangus') || n.contains('fish'))
+    if (n.contains('tilapia') || n.contains('bangus') || n.contains('fish')) {
       return '🐟';
-    if (n.contains('pechay') || n.contains('veggie') || n.contains('vegeta'))
+    }
+    if (n.contains('pechay') || n.contains('veggie') || n.contains('vegeta')) {
       return '🥬';
+    }
     if (n.contains('pork') || n.contains('liempo')) return '🥩';
     if (n.contains('rice')) return '🍚';
     return '🛒';

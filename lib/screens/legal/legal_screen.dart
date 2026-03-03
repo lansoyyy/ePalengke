@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
+import '../track/track_screen.dart';
 
 class LegalScreen extends StatefulWidget {
   const LegalScreen({super.key});
@@ -208,11 +209,9 @@ class _LegalScreenState extends State<LegalScreen> {
                 child: ElevatedButton(
                   onPressed: _isChecked
                       ? () {
-                          // Proceed to order confirmation
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Order placed successfully!'),
-                              backgroundColor: AppColors.primary,
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const TrackScreen(),
                             ),
                           );
                         }
