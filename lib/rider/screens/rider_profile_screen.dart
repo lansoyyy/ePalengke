@@ -96,7 +96,9 @@ class _RiderProfileScreenState extends State<RiderProfileScreen> {
                                     color: AppColors.primary,
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                        color: Colors.white, width: 2),
+                                      color: Colors.white,
+                                      width: 2,
+                                    ),
                                   ),
                                   child: const Icon(
                                     Icons.verified,
@@ -120,7 +122,9 @@ class _RiderProfileScreenState extends State<RiderProfileScreen> {
                           const SizedBox(height: 6),
                           Container(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 14, vertical: 4),
+                              horizontal: 14,
+                              vertical: 4,
+                            ),
                             decoration: BoxDecoration(
                               color: const Color(0xFFEBF8F1),
                               borderRadius: BorderRadius.circular(20),
@@ -210,25 +214,28 @@ class _RiderProfileScreenState extends State<RiderProfileScreen> {
                                   label: 'Daily Earnings Summary',
                                 ),
                                 Divider(
-                                    height: 1,
-                                    indent: 56,
-                                    color: Color(0xFFF3F4F6)),
+                                  height: 1,
+                                  indent: 56,
+                                  color: Color(0xFFF3F4F6),
+                                ),
                                 _SettingsRow(
                                   icon: Icons.account_balance_wallet_outlined,
                                   label: 'Wallet Settings',
                                 ),
                                 Divider(
-                                    height: 1,
-                                    indent: 56,
-                                    color: Color(0xFFF3F4F6)),
+                                  height: 1,
+                                  indent: 56,
+                                  color: Color(0xFFF3F4F6),
+                                ),
                                 _SettingsRow(
                                   icon: Icons.help_outline,
                                   label: 'Help & Support',
                                 ),
                                 Divider(
-                                    height: 1,
-                                    indent: 56,
-                                    color: Color(0xFFF3F4F6)),
+                                  height: 1,
+                                  indent: 56,
+                                  color: Color(0xFFF3F4F6),
+                                ),
                                 _SettingsRow(
                                   icon: Icons.gavel_rounded,
                                   label: 'Legal & Terms',
@@ -485,10 +492,8 @@ class _NavBarItem extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 11,
-                  fontWeight:
-                      isActive ? FontWeight.w600 : FontWeight.w400,
-                  color:
-                      isActive ? AppColors.primary : const Color(0xFF9CA3AF),
+                  fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+                  color: isActive ? AppColors.primary : const Color(0xFF9CA3AF),
                 ),
               ),
             ],

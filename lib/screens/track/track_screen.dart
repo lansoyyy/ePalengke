@@ -180,9 +180,7 @@ class TrackScreen extends StatelessWidget {
                                   ),
                                   Text(
                                     ' • ',
-                                    style: TextStyle(
-                                      color: Color(0xFF9CA3AF),
-                                    ),
+                                    style: TextStyle(color: Color(0xFF9CA3AF)),
                                   ),
                                   Text(
                                     '124 Trips',
@@ -238,8 +236,7 @@ class TrackScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
-                            border:
-                                Border.all(color: const Color(0xFFE5E7EB)),
+                            border: Border.all(color: const Color(0xFFE5E7EB)),
                           ),
                           child: const Icon(
                             Icons.phone_outlined,
@@ -298,7 +295,9 @@ class TrackScreen extends StatelessWidget {
                         // Rider marker
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 14, vertical: 8),
+                            horizontal: 14,
+                            vertical: 8,
+                          ),
                           decoration: BoxDecoration(
                             color: const Color(0xFF0D1B2A),
                             borderRadius: BorderRadius.circular(20),
@@ -306,8 +305,11 @@ class TrackScreen extends StatelessWidget {
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: const [
-                              Icon(Icons.two_wheeler,
-                                  size: 16, color: Colors.white),
+                              Icon(
+                                Icons.two_wheeler,
+                                size: 16,
+                                color: Colors.white,
+                              ),
                               SizedBox(width: 6),
                               Text(
                                 'Kuya Mario',
@@ -338,58 +340,58 @@ class TrackScreen extends StatelessWidget {
                         );
                       },
                       child: Container(
-                      padding: const EdgeInsets.fromLTRB(24, 16, 24, 20),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(20),
+                        padding: const EdgeInsets.fromLTRB(24, 16, 24, 20),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(20),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    'ESTIMATED ARRIVAL',
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 1.0,
+                                      color: Color(0xFF9CA3AF),
+                                    ),
+                                  ),
+                                  SizedBox(height: 4),
+                                  Text(
+                                    '15 – 20 mins',
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 26,
+                                      fontWeight: FontWeight.w800,
+                                      color: Color(0xFF0D1B2A),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              width: 44,
+                              height: 44,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFEBF8F1),
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.access_time_rounded,
+                                size: 22,
+                                color: AppColors.primary,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  'ESTIMATED ARRIVAL',
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w600,
-                                    letterSpacing: 1.0,
-                                    color: Color(0xFF9CA3AF),
-                                  ),
-                                ),
-                                SizedBox(height: 4),
-                                Text(
-                                  '15 – 20 mins',
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 26,
-                                    fontWeight: FontWeight.w800,
-                                    color: Color(0xFF0D1B2A),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            width: 44,
-                            height: 44,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFEBF8F1),
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Icon(
-                              Icons.access_time_rounded,
-                              size: 22,
-                              color: AppColors.primary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                     ),
                   ),
                 ],

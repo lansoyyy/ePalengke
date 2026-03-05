@@ -23,7 +23,9 @@ class _RiderFinalizeReceiptScreenState
   }
 
   bool get _canConfirm =>
-      _hasPhoto && _amountController.text.isNotEmpty && _amountController.text != '0';
+      _hasPhoto &&
+      _amountController.text.isNotEmpty &&
+      _amountController.text != '0';
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +73,9 @@ class _RiderFinalizeReceiptScreenState
                     // ── Info banner ────────────────────────────────────────
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 14),
+                        horizontal: 16,
+                        vertical: 14,
+                      ),
                       decoration: BoxDecoration(
                         color: const Color(0xFFEBF8F1),
                         borderRadius: BorderRadius.circular(12),
@@ -134,10 +138,13 @@ class _RiderFinalizeReceiptScreenState
                             child: TextField(
                               controller: _amountController,
                               keyboardType:
-                                  const TextInputType.numberWithOptions(decimal: true),
+                                  const TextInputType.numberWithOptions(
+                                    decimal: true,
+                                  ),
                               inputFormatters: [
                                 FilteringTextInputFormatter.allow(
-                                    RegExp(r'^\d+\.?\d{0,2}')),
+                                  RegExp(r'^\d+\.?\d{0,2}'),
+                                ),
                               ],
                               onChanged: (_) => setState(() {}),
                               style: const TextStyle(
@@ -155,8 +162,9 @@ class _RiderFinalizeReceiptScreenState
                                   color: Color(0xFFD1D5DB),
                                 ),
                                 border: InputBorder.none,
-                                contentPadding:
-                                    EdgeInsets.symmetric(vertical: 16),
+                                contentPadding: EdgeInsets.symmetric(
+                                  vertical: 16,
+                                ),
                               ),
                             ),
                           ),
@@ -283,8 +291,9 @@ class _RiderFinalizeReceiptScreenState
                                         foregroundColor: Colors.white,
                                         elevation: 0,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
+                                          borderRadius: BorderRadius.circular(
+                                            10,
+                                          ),
                                         ),
                                       ),
                                       child: const Text(

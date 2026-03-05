@@ -66,7 +66,9 @@ class _StatementScreenState extends State<StatementScreen> {
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 5),
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
                     decoration: BoxDecoration(
                       color: const Color(0xFFEBF8F1),
                       borderRadius: BorderRadius.circular(20),
@@ -75,8 +77,11 @@ class _StatementScreenState extends State<StatementScreen> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: const [
-                        Icon(Icons.check_circle,
-                            size: 14, color: AppColors.primary),
+                        Icon(
+                          Icons.check_circle,
+                          size: 14,
+                          color: AppColors.primary,
+                        ),
                         SizedBox(width: 5),
                         Text(
                           'PAID',
@@ -160,17 +165,21 @@ class _StatementScreenState extends State<StatementScreen> {
                                 ),
                                 Container(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 14, vertical: 8),
+                                    horizontal: 14,
+                                    vertical: 8,
+                                  ),
                                   decoration: BoxDecoration(
-                                    color:
-                                        Colors.black.withValues(alpha: 0.65),
+                                    color: Colors.black.withValues(alpha: 0.65),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: const [
-                                      Icon(Icons.zoom_in,
-                                          size: 16, color: Colors.white),
+                                      Icon(
+                                        Icons.zoom_in,
+                                        size: 16,
+                                        color: Colors.white,
+                                      ),
                                       SizedBox(width: 6),
                                       Text(
                                         'VIEW FULL RECEIPT',
@@ -200,12 +209,14 @@ class _StatementScreenState extends State<StatementScreen> {
                           const _SectionHeader(label: 'PAYMENT SUMMARY'),
                           const SizedBox(height: 14),
                           _SummaryRow(
-                              label: 'Market Total (Receipt)',
-                              value: '₱240.00'),
+                            label: 'Market Total (Receipt)',
+                            value: '₱240.00',
+                          ),
                           const SizedBox(height: 8),
                           _SummaryRow(
-                              label: 'Delivery Fee (3.2 km)',
-                              value: '₱45.00'),
+                            label: 'Delivery Fee (3.2 km)',
+                            value: '₱45.00',
+                          ),
                           const SizedBox(height: 8),
                           Row(
                             children: [
@@ -236,8 +247,7 @@ class _StatementScreenState extends State<StatementScreen> {
                           ),
                           const Padding(
                             padding: EdgeInsets.symmetric(vertical: 12),
-                            child:
-                                Divider(height: 1, color: Color(0xFFE5E7EB)),
+                            child: Divider(height: 1, color: Color(0xFFE5E7EB)),
                           ),
                           Row(
                             children: const [
@@ -265,12 +275,15 @@ class _StatementScreenState extends State<StatementScreen> {
                           const SizedBox(height: 14),
                           Container(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 14, vertical: 12),
+                              horizontal: 14,
+                              vertical: 12,
+                            ),
                             decoration: BoxDecoration(
                               color: const Color(0xFFF9FAFB),
                               borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(color: const Color(0xFFE5E7EB)),
+                              border: Border.all(
+                                color: const Color(0xFFE5E7EB),
+                              ),
                             ),
                             child: Row(
                               children: [
@@ -289,8 +302,7 @@ class _StatementScreenState extends State<StatementScreen> {
                                 ),
                                 const SizedBox(width: 12),
                                 Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: const [
                                     Text(
                                       'PAYMENT METHOD',
@@ -387,8 +399,9 @@ class _StatementScreenState extends State<StatementScreen> {
                               return GestureDetector(
                                 onTap: () => setState(() => _rating = i + 1),
                                 child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 4),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 4,
+                                  ),
                                   child: Icon(
                                     Icons.star_rounded,
                                     size: 36,
@@ -404,8 +417,9 @@ class _StatementScreenState extends State<StatementScreen> {
                           Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(color: const Color(0xFFE5E7EB)),
+                              border: Border.all(
+                                color: const Color(0xFFE5E7EB),
+                              ),
                             ),
                             child: TextField(
                               controller: _feedbackController,
@@ -460,8 +474,7 @@ class _StatementScreenState extends State<StatementScreen> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                              builder: (_) => const HomeScreen()),
+                          MaterialPageRoute(builder: (_) => const HomeScreen()),
                           (route) => false,
                         );
                       },

@@ -55,7 +55,9 @@ class RiderDeliveryRouteScreen extends StatelessWidget {
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 6),
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       color: const Color(0xFFEBF8F1),
                       borderRadius: BorderRadius.circular(20),
@@ -101,15 +103,9 @@ class RiderDeliveryRouteScreen extends StatelessWidget {
                     right: 16,
                     child: Column(
                       children: [
-                        _MapControlButton(
-                          icon: Icons.add,
-                          onTap: () {},
-                        ),
+                        _MapControlButton(icon: Icons.add, onTap: () {}),
                         const SizedBox(height: 8),
-                        _MapControlButton(
-                          icon: Icons.remove,
-                          onTap: () {},
-                        ),
+                        _MapControlButton(icon: Icons.remove, onTap: () {}),
                         const SizedBox(height: 8),
                         _MapControlButton(
                           icon: Icons.my_location,
@@ -149,7 +145,9 @@ class RiderDeliveryRouteScreen extends StatelessWidget {
                     top: 290,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 5),
+                        horizontal: 10,
+                        vertical: 5,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8),
@@ -232,7 +230,9 @@ class RiderDeliveryRouteScreen extends StatelessWidget {
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 6),
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
                           decoration: BoxDecoration(
                             border: Border.all(color: AppColors.primary),
                             borderRadius: BorderRadius.circular(20),
@@ -257,8 +257,7 @@ class RiderDeliveryRouteScreen extends StatelessWidget {
                         color: const Color(0xFFF0FAF4),
                         borderRadius: BorderRadius.circular(10),
                         border: const Border(
-                          left: BorderSide(
-                              color: AppColors.primary, width: 3),
+                          left: BorderSide(color: AppColors.primary, width: 3),
                         ),
                       ),
                       child: Column(
@@ -410,8 +409,11 @@ class _ContactButton extends StatelessWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
-  const _ContactButton(
-      {required this.icon, required this.label, required this.onTap});
+  const _ContactButton({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

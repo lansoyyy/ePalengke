@@ -146,7 +146,9 @@ class _RiderJobsScreenState extends State<RiderJobsScreen>
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 14, vertical: 8),
+                          horizontal: 14,
+                          vertical: 8,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.primary,
                           borderRadius: BorderRadius.circular(12),
@@ -256,10 +258,12 @@ class _JobList extends StatelessWidget {
         ListView(
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
           children: [
-            ...jobs.map((job) => Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: _JobCard(job: job),
-                )),
+            ...jobs.map(
+              (job) => Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: _JobCard(job: job),
+              ),
+            ),
             // ── Footer: checking for jobs ──────────────────────────────
             const SizedBox(height: 20),
             Column(
@@ -412,7 +416,8 @@ class _JobCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                if (isUrgent) _Badge(label: 'URGENT', color: const Color(0xFF6B7280)),
+                if (isUrgent)
+                  _Badge(label: 'URGENT', color: const Color(0xFF6B7280)),
                 if (isHighValue)
                   _Badge(
                     label: 'HIGH\nVALUE',
@@ -430,8 +435,11 @@ class _JobCard extends StatelessWidget {
                     label: 'ROUTE INFO',
                     child: Row(
                       children: [
-                        const Icon(Icons.location_on_outlined,
-                            size: 15, color: AppColors.primary),
+                        const Icon(
+                          Icons.location_on_outlined,
+                          size: 15,
+                          color: AppColors.primary,
+                        ),
                         const SizedBox(width: 4),
                         Text(
                           '${job.distanceKm}km • ${job.etaMins} mins',
