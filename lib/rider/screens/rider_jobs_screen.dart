@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import 'rider_finalize_receipt_screen.dart';
+import 'rider_chat_list_screen.dart';
 
 // ── Data model ────────────────────────────────────────────────────────────────
 
@@ -144,6 +145,48 @@ class _RiderJobsScreenState extends State<RiderJobsScreen>
                           ],
                         ),
                       ),
+                      // Chat icon
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const RiderChatListScreen(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: 46,
+                          height: 46,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFF3F4F6),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Stack(
+                            children: [
+                              const Center(
+                                child: Icon(
+                                  Icons.chat_bubble_outline,
+                                  size: 22,
+                                  color: Color(0xFF374151),
+                                ),
+                              ),
+                              Positioned(
+                                right: 8,
+                                top: 8,
+                                child: Container(
+                                  width: 8,
+                                  height: 8,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.red,
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
                       Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 14,

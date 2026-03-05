@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../core/theme/app_colors.dart';
 import 'rider_delivery_route_screen.dart';
+import 'rider_chat_screen.dart';
 
 class RiderFinalizeReceiptScreen extends StatefulWidget {
   const RiderFinalizeReceiptScreen({super.key});
@@ -59,7 +60,35 @@ class _RiderFinalizeReceiptScreenState
                       ),
                     ),
                   ),
-                  const SizedBox(width: 48),
+                  // Chat button
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => const RiderChatScreen(
+                            customerName: 'Juan Dela Cruz',
+                            customerAvatar: '👨‍💼',
+                            orderId: 'ORD-12345',
+                            rating: 4.9,
+                            deliveries: 124,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF3F4F6),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Icon(
+                        Icons.chat_bubble_outline,
+                        size: 20,
+                        color: Color(0xFF374151),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

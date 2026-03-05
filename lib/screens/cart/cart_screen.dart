@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../../screens/home/home_screen.dart';
 import '../legal/legal_screen.dart';
+import '../chat/customer_chat_list_screen.dart';
 
 class CartScreen extends StatefulWidget {
   final Map<MarketProduct, int> cartItems;
@@ -80,6 +81,30 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ),
                   const Spacer(),
+                  // Chat button
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => const CustomerChatListScreen(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF3F4F6),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Icon(
+                        Icons.chat_bubble_outline,
+                        size: 20,
+                        color: Color(0xFF374151),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
                   Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 12,

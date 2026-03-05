@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../statement/statement_screen.dart';
+import '../chat/customer_chat_screen.dart';
 
 class TrackScreen extends StatelessWidget {
   const TrackScreen({super.key});
@@ -205,7 +206,17 @@ class TrackScreen extends StatelessWidget {
                           child: SizedBox(
                             height: 46,
                             child: ElevatedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (_) => const CustomerChatScreen(
+                                      riderName: 'Kuya Mario',
+                                      riderAvatar: '🧑‍🦱',
+                                      orderId: 'ORD-12345',
+                                    ),
+                                  ),
+                                );
+                              },
                               icon: const Icon(
                                 Icons.chat_bubble_outline,
                                 size: 18,

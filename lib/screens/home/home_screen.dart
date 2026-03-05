@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../cart/cart_screen.dart';
+import '../chat/customer_chat_list_screen.dart';
 
 // ── Data model ───────────────────────────────────────────────────────────────
 
@@ -195,6 +196,30 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                         const SizedBox(width: 10),
+                        // Chat icon
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) => const CustomerChatListScreen(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: 42,
+                            height: 42,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFF3F4F6),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Icon(
+                              Icons.chat_bubble_outline,
+                              size: 22,
+                              color: Color(0xFF374151),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
                         // Avatar
                         Container(
                           width: 42,
@@ -347,7 +372,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          childAspectRatio: 0.72,
+                          childAspectRatio: 0.65,
                           crossAxisSpacing: 12,
                           mainAxisSpacing: 12,
                         ),
