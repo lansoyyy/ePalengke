@@ -1,9 +1,12 @@
-import 'package:epalengke/rider/screens/rider_jobs_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'core/theme/app_theme.dart';
 import 'core/constants/app_constants.dart';
 import 'screens/login/login_screen.dart';
+import 'rider/screens/rider_login_screen.dart';
+import 'rider/screens/rider_otp_screen.dart';
+import 'rider/screens/rider_registration_screen.dart';
+import 'rider/screens/rider_pending_verification_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +24,11 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(AppTheme.lightTheme.textTheme),
       ),
       themeMode: ThemeMode.light,
-      home: const RiderJobsScreen(),
+      initialRoute: '/rider/login',
+      routes: {
+        '/rider/login': (context) => const RiderLoginScreen(),
+        '/rider/register': (context) => const RiderRegistrationScreen(),
+      },
     );
   }
 }
