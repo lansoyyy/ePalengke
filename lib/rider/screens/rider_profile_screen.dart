@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import 'rider_jobs_screen.dart';
+import 'rider_earnings_screen.dart';
+import 'rider_availability_screen.dart';
+import 'rider_order_history_screen.dart';
+import 'rider_withdraw_screen.dart';
+import 'rider_vehicle_screen.dart';
+import 'rider_documents_screen.dart';
+import 'rider_notifications_screen.dart';
 
 class RiderProfileScreen extends StatefulWidget {
   const RiderProfileScreen({super.key});
@@ -194,6 +201,108 @@ class _RiderProfileScreenState extends State<RiderProfileScreen> {
                       ),
                     ),
                     const SizedBox(height: 20),
+                    // ── Delivery settings ─────────────────────────────────
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const _SectionLabel(label: 'DELIVERY SETTINGS'),
+                          const SizedBox(height: 10),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            child: Column(
+                              children: [
+                                _SettingsRow(
+                                  icon: Icons.toggle_on_outlined,
+                                  label: 'Availability',
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (_) =>
+                                            const RiderAvailabilityScreen(),
+                                      ),
+                                    );
+                                  },
+                                ),
+                                Divider(
+                                  height: 1,
+                                  indent: 56,
+                                  color: Color(0xFFF3F4F6),
+                                ),
+                                _SettingsRow(
+                                  icon: Icons.history_outlined,
+                                  label: 'Order History',
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (_) =>
+                                            const RiderOrderHistoryScreen(),
+                                      ),
+                                    );
+                                  },
+                                ),
+                                Divider(
+                                  height: 1,
+                                  indent: 56,
+                                  color: Color(0xFFF3F4F6),
+                                ),
+                                _SettingsRow(
+                                  icon: Icons.two_wheeler_outlined,
+                                  label: 'Vehicle Information',
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (_) =>
+                                            const RiderVehicleScreen(),
+                                      ),
+                                    );
+                                  },
+                                ),
+                                Divider(
+                                  height: 1,
+                                  indent: 56,
+                                  color: Color(0xFFF3F4F6),
+                                ),
+                                _SettingsRow(
+                                  icon: Icons.description_outlined,
+                                  label: 'Documents',
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (_) =>
+                                            const RiderDocumentsScreen(),
+                                      ),
+                                    );
+                                  },
+                                ),
+                                Divider(
+                                  height: 1,
+                                  indent: 56,
+                                  color: Color(0xFFF3F4F6),
+                                ),
+                                _SettingsRow(
+                                  icon: Icons.notifications_outlined,
+                                  label: 'Notifications',
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (_) =>
+                                            const RiderNotificationsScreen(),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
                     // ── Account settings ──────────────────────────────────
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -208,10 +317,18 @@ class _RiderProfileScreenState extends State<RiderProfileScreen> {
                               borderRadius: BorderRadius.circular(14),
                             ),
                             child: Column(
-                              children: const [
+                              children: [
                                 _SettingsRow(
                                   icon: Icons.payments_outlined,
                                   label: 'Daily Earnings Summary',
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (_) =>
+                                            const RiderEarningsScreen(),
+                                      ),
+                                    );
+                                  },
                                 ),
                                 Divider(
                                   height: 1,
@@ -221,6 +338,14 @@ class _RiderProfileScreenState extends State<RiderProfileScreen> {
                                 _SettingsRow(
                                   icon: Icons.account_balance_wallet_outlined,
                                   label: 'Wallet Settings',
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (_) =>
+                                            const RiderWithdrawScreen(),
+                                      ),
+                                    );
+                                  },
                                 ),
                                 Divider(
                                   height: 1,
@@ -230,6 +355,7 @@ class _RiderProfileScreenState extends State<RiderProfileScreen> {
                                 _SettingsRow(
                                   icon: Icons.help_outline,
                                   label: 'Help & Support',
+                                  onTap: () {},
                                 ),
                                 Divider(
                                   height: 1,
@@ -239,6 +365,7 @@ class _RiderProfileScreenState extends State<RiderProfileScreen> {
                                 _SettingsRow(
                                   icon: Icons.gavel_rounded,
                                   label: 'Legal & Terms',
+                                  onTap: () {},
                                 ),
                               ],
                             ),
@@ -321,7 +448,13 @@ class _RiderProfileScreenState extends State<RiderProfileScreen> {
                     icon: Icons.attach_money,
                     label: 'Earnings',
                     isActive: _currentNavIndex == 1,
-                    onTap: () => setState(() => _currentNavIndex = 1),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => const RiderEarningsScreen(),
+                        ),
+                      );
+                    },
                   ),
                   _NavBarItem(
                     icon: Icons.person_outline,
@@ -420,12 +553,16 @@ class _StatCard extends StatelessWidget {
 class _SettingsRow extends StatelessWidget {
   final IconData icon;
   final String label;
+  final VoidCallback? onTap;
 
-  const _SettingsRow({required this.icon, required this.label});
+  const _SettingsRow({required this.icon, required this.label, this.onTap})
+      ;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       child: Row(
         children: [
@@ -453,7 +590,8 @@ class _SettingsRow extends StatelessWidget {
           const Icon(Icons.chevron_right, size: 20, color: Color(0xFF9CA3AF)),
         ],
       ),
-    );
+    ), // Padding
+    ); // InkWell
   }
 }
 

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../cart/cart_screen.dart';
 import '../chat/customer_chat_list_screen.dart';
+import '../search/search_screen.dart';
+import '../profile/customer_profile_screen.dart';
+import '../product_details/product_details_screen.dart';
 
 // ── Data model ───────────────────────────────────────────────────────────────
 
@@ -27,7 +30,7 @@ class MarketProduct {
   });
 }
 
-const List<MarketProduct> _products = [
+const List<MarketProduct> products = [
   MarketProduct(
     name: 'Whole Chicken',
     brand: 'Magnolia',
@@ -114,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
   double get _cartTotal {
     double total = 0;
     _cartItems.forEach((idx, qty) {
-      total += _products[idx].price * qty;
+      total += products[idx].price * qty;
     });
     return total;
   }
@@ -221,17 +224,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(width: 10),
                         // Avatar
-                        Container(
-                          width: 42,
-                          height: 42,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFE0D6CC),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: const Center(
-                            child: Text(
-                              '👨‍💼',
-                              style: TextStyle(fontSize: 22),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    const CustomerProfileScreen(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: 42,
+                            height: 42,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFE0D6CC),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                '👨\u200d💼',
+                                style: TextStyle(fontSize: 22),
+                              ),
                             ),
                           ),
                         ),
@@ -243,30 +256,39 @@ class _HomeScreenState extends State<HomeScreen> {
                 SliverToBoxAdapter(
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20, 18, 20, 0),
-                    child: Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF3F4F6),
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: Row(
-                        children: const [
-                          SizedBox(width: 14),
-                          Icon(
-                            Icons.search,
-                            color: Color(0xFF9CA3AF),
-                            size: 22,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const SearchScreen(),
                           ),
-                          SizedBox(width: 10),
-                          Text(
-                            'Search for meat, veggies, rice...',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 14,
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF3F4F6),
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                        child: Row(
+                          children: const [
+                            SizedBox(width: 14),
+                            Icon(
+                              Icons.search,
                               color: Color(0xFF9CA3AF),
+                              size: 22,
                             ),
-                          ),
-                        ],
+                            SizedBox(width: 10),
+                            Text(
+                              'Search for meat, veggies, rice...',
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 14,
+                                color: Color(0xFF9CA3AF),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -378,11 +400,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                     delegate: SliverChildBuilderDelegate(
                       (context, i) => _ProductCard(
-                        product: _products[i],
+                        product: products[i],
                         cartQty: _cartItems[i] ?? 0,
                         onAdd: () => _addToCart(i),
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => ProductDetailsScreen(
+                                product: products[i],
+                                initialIndex: i,
+                              ),
+                            ),
+                          );
+                        },
                       ),
-                      childCount: _products.length,
+                      childCount: products.length,
                     ),
                   ),
                 ),
@@ -400,7 +432,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       MaterialPageRoute(
                         builder: (_) => CartScreen(
                           cartItems: _cartItems.map(
-                            (k, v) => MapEntry(_products[k], v),
+                            (k, v) => MapEntry(products[k], v),
                           ),
                         ),
                       ),
@@ -488,16 +520,20 @@ class _ProductCard extends StatelessWidget {
   final MarketProduct product;
   final int cartQty;
   final VoidCallback onAdd;
+  final VoidCallback? onTap;
 
   const _ProductCard({
     required this.product,
     required this.cartQty,
     required this.onAdd,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -644,8 +680,9 @@ class _ProductCard extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
+    ),   // Container
+  );     // GestureDetector
+  } // build
 
   String _getProductEmoji(String name) {
     final n = name.toLowerCase();

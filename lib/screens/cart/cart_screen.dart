@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../../screens/home/home_screen.dart';
-import '../legal/legal_screen.dart';
+import '../checkout/checkout_screen.dart';
 import '../chat/customer_chat_list_screen.dart';
 
 class CartScreen extends StatefulWidget {
@@ -271,7 +271,11 @@ class _CartScreenState extends State<CartScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => const LegalScreen()),
+                      MaterialPageRoute(
+                        builder: (_) => CheckoutScreen(
+                          cartItems: _items,
+                        ),
+                      ),
                     );
                   },
                   style: ElevatedButton.styleFrom(
