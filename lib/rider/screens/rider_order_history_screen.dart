@@ -108,8 +108,10 @@ class _RiderOrderHistoryScreenState extends State<RiderOrderHistoryScreen>
                     children: [
                       IconButton(
                         onPressed: () => Navigator.of(context).pop(),
-                        icon: const Icon(Icons.arrow_back,
-                            color: Color(0xFF111827)),
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: Color(0xFF111827),
+                        ),
                       ),
                       const Expanded(
                         child: Text(
@@ -143,12 +145,8 @@ class _RiderOrderHistoryScreenState extends State<RiderOrderHistoryScreen>
                       fontSize: 13,
                     ),
                     tabs: [
-                      Tab(
-                        text: 'Completed (${_completed.length})',
-                      ),
-                      Tab(
-                        text: 'Cancelled (${_cancelled.length})',
-                      ),
+                      Tab(text: 'Completed (${_completed.length})'),
+                      Tab(text: 'Cancelled (${_cancelled.length})'),
                     ],
                   ),
                 ],
@@ -160,7 +158,9 @@ class _RiderOrderHistoryScreenState extends State<RiderOrderHistoryScreen>
               Container(
                 color: AppColors.white,
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 12),
+                  horizontal: 20,
+                  vertical: 12,
+                ),
                 child: Row(
                   children: [
                     _SummaryPill(
@@ -184,8 +184,11 @@ class _RiderOrderHistoryScreenState extends State<RiderOrderHistoryScreen>
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.history,
-                              size: 56, color: Color(0xFFD1D5DB)),
+                          const Icon(
+                            Icons.history,
+                            size: 56,
+                            color: Color(0xFFD1D5DB),
+                          ),
                           const SizedBox(height: 12),
                           Text(
                             _tabCtrl.index == 0
@@ -203,10 +206,8 @@ class _RiderOrderHistoryScreenState extends State<RiderOrderHistoryScreen>
                   : ListView.separated(
                       padding: const EdgeInsets.all(16),
                       itemCount: _current.length,
-                      separatorBuilder: (_, __) =>
-                          const SizedBox(height: 10),
-                      itemBuilder: (_, i) =>
-                          _OrderHistoryCard(_current[i]),
+                      separatorBuilder: (_, __) => const SizedBox(height: 10),
+                      itemBuilder: (_, i) => _OrderHistoryCard(_current[i]),
                     ),
             ),
           ],
@@ -220,8 +221,11 @@ class _SummaryPill extends StatelessWidget {
   final String label;
   final String value;
   final Color color;
-  const _SummaryPill(
-      {required this.label, required this.value, required this.color});
+  const _SummaryPill({
+    required this.label,
+    required this.value,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -272,10 +276,7 @@ class _OrderHistoryCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
-            blurRadius: 6,
-          ),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 6),
         ],
       ),
       child: Column(
@@ -295,7 +296,9 @@ class _OrderHistoryCard extends StatelessWidget {
               const Spacer(),
               Container(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 10, vertical: 4),
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: isCancelled
                       ? const Color(0xFFFEF2F2)
@@ -308,9 +311,7 @@ class _OrderHistoryCard extends StatelessWidget {
                     fontFamily: 'Poppins',
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
-                    color: isCancelled
-                        ? AppColors.error
-                        : AppColors.primary,
+                    color: isCancelled ? AppColors.error : AppColors.primary,
                   ),
                 ),
               ),
@@ -327,8 +328,7 @@ class _OrderHistoryCard extends StatelessWidget {
           const SizedBox(height: 10),
           Row(
             children: [
-              const Icon(Icons.access_time,
-                  size: 13, color: Color(0xFF9CA3AF)),
+              const Icon(Icons.access_time, size: 13, color: Color(0xFF9CA3AF)),
               const SizedBox(width: 4),
               Text(
                 order.date,

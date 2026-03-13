@@ -38,8 +38,10 @@ class _RiderWithdrawScreenState extends State<RiderWithdrawScreen> {
     if (amount == null || amount <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Please enter a valid amount.',
-              style: TextStyle(fontFamily: 'Poppins')),
+          content: Text(
+            'Please enter a valid amount.',
+            style: TextStyle(fontFamily: 'Poppins'),
+          ),
           behavior: SnackBarBehavior.floating,
           backgroundColor: AppColors.error,
         ),
@@ -49,8 +51,10 @@ class _RiderWithdrawScreenState extends State<RiderWithdrawScreen> {
     if (amount > _balance) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Insufficient balance.',
-              style: TextStyle(fontFamily: 'Poppins')),
+          content: Text(
+            'Insufficient balance.',
+            style: TextStyle(fontFamily: 'Poppins'),
+          ),
           behavior: SnackBarBehavior.floating,
           backgroundColor: AppColors.error,
         ),
@@ -61,12 +65,10 @@ class _RiderWithdrawScreenState extends State<RiderWithdrawScreen> {
       context: context,
       barrierDismissible: false,
       builder: (_) => AlertDialog(
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: const Text(
           'Confirm Withdrawal',
-          style: TextStyle(
-              fontFamily: 'Poppins', fontWeight: FontWeight.w700),
+          style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w700),
         ),
         content: Text(
           'Withdraw ₱${amount.toStringAsFixed(2)} via ${_methodIndex == 0 ? 'GCash' : 'Bank Transfer'}?\n\nProcessing time: 1–3 business days.',
@@ -75,8 +77,10 @@ class _RiderWithdrawScreenState extends State<RiderWithdrawScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Cancel',
-                style: TextStyle(fontFamily: 'Poppins')),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(fontFamily: 'Poppins'),
+            ),
           ),
           ElevatedButton(
             onPressed: () {
@@ -88,10 +92,13 @@ class _RiderWithdrawScreenState extends State<RiderWithdrawScreen> {
               foregroundColor: Colors.white,
               elevation: 0,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
+                borderRadius: BorderRadius.circular(8),
+              ),
             ),
-            child: const Text('Confirm',
-                style: TextStyle(fontFamily: 'Poppins')),
+            child: const Text(
+              'Confirm',
+              style: TextStyle(fontFamily: 'Poppins'),
+            ),
           ),
         ],
       ),
@@ -114,8 +121,10 @@ class _RiderWithdrawScreenState extends State<RiderWithdrawScreen> {
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -218,21 +227,26 @@ class _RiderWithdrawScreenState extends State<RiderWithdrawScreen> {
                         filled: true,
                         fillColor: Colors.white,
                         contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 16),
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide:
-                              const BorderSide(color: Color(0xFFE5E7EB)),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFE5E7EB),
+                          ),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide:
-                              const BorderSide(color: Color(0xFFE5E7EB)),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFE5E7EB),
+                          ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide:
-                              const BorderSide(color: AppColors.primary),
+                          borderSide: const BorderSide(
+                            color: AppColors.primary,
+                          ),
                         ),
                       ),
                     ),
@@ -243,14 +257,19 @@ class _RiderWithdrawScreenState extends State<RiderWithdrawScreen> {
                         _QuickBtn(label: '₱500', onTap: () => _setQuick(500)),
                         const SizedBox(width: 8),
                         _QuickBtn(
-                            label: '₱1,000', onTap: () => _setQuick(1000)),
+                          label: '₱1,000',
+                          onTap: () => _setQuick(1000),
+                        ),
                         const SizedBox(width: 8),
                         _QuickBtn(
-                            label: '₱2,000', onTap: () => _setQuick(2000)),
+                          label: '₱2,000',
+                          onTap: () => _setQuick(2000),
+                        ),
                         const SizedBox(width: 8),
                         _QuickBtn(
-                            label: 'All',
-                            onTap: () => _setQuick(_balance)),
+                          label: 'All',
+                          onTap: () => _setQuick(_balance),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 20),
@@ -292,12 +311,17 @@ class _RiderWithdrawScreenState extends State<RiderWithdrawScreen> {
                         color: const Color(0xFFEFF6FF),
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                            color: const Color(0xFFBFDBFE), width: 1),
+                          color: const Color(0xFFBFDBFE),
+                          width: 1,
+                        ),
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.info_outline,
-                              size: 16, color: Color(0xFF3B82F6)),
+                          const Icon(
+                            Icons.info_outline,
+                            size: 16,
+                            color: Color(0xFF3B82F6),
+                          ),
                           const SizedBox(width: 8),
                           const Expanded(
                             child: Text(
@@ -324,7 +348,8 @@ class _RiderWithdrawScreenState extends State<RiderWithdrawScreen> {
                           foregroundColor: Colors.white,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
                         child: const Text(
                           'Withdraw Now',
@@ -363,13 +388,15 @@ class _RiderWithdrawScreenState extends State<RiderWithdrawScreen> {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: _history.length,
-                        separatorBuilder: (_, __) => const Divider(
-                            height: 1, color: Color(0xFFF3F4F6)),
+                        separatorBuilder: (_, __) =>
+                            const Divider(height: 1, color: Color(0xFFF3F4F6)),
                         itemBuilder: (_, i) {
                           final h = _history[i];
                           return Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 14),
+                              horizontal: 16,
+                              vertical: 14,
+                            ),
                             child: Row(
                               children: [
                                 Container(
@@ -377,13 +404,13 @@ class _RiderWithdrawScreenState extends State<RiderWithdrawScreen> {
                                   height: 38,
                                   decoration: BoxDecoration(
                                     color: const Color(0xFFF3F4F6),
-                                    borderRadius:
-                                        BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: const Icon(
-                                      Icons.account_balance_wallet,
-                                      size: 18,
-                                      color: Color(0xFF6B7280)),
+                                    Icons.account_balance_wallet,
+                                    size: 18,
+                                    color: Color(0xFF6B7280),
+                                  ),
                                 ),
                                 const SizedBox(width: 12),
                                 Expanded(
@@ -505,11 +532,11 @@ class _MethodCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(icon,
-                  color: selected
-                      ? AppColors.primary
-                      : const Color(0xFF6B7280),
-                  size: 22),
+              Icon(
+                icon,
+                color: selected ? AppColors.primary : const Color(0xFF6B7280),
+                size: 22,
+              ),
               const SizedBox(height: 8),
               Text(
                 label,
@@ -517,9 +544,7 @@ class _MethodCard extends StatelessWidget {
                   fontFamily: 'Poppins',
                   fontSize: 13,
                   fontWeight: FontWeight.w700,
-                  color: selected
-                      ? AppColors.primary
-                      : const Color(0xFF111827),
+                  color: selected ? AppColors.primary : const Color(0xFF111827),
                 ),
               ),
               Text(
@@ -542,8 +567,11 @@ class _WithdrawalEntry {
   final double amount;
   final String method;
   final String date;
-  const _WithdrawalEntry(
-      {required this.amount, required this.method, required this.date});
+  const _WithdrawalEntry({
+    required this.amount,
+    required this.method,
+    required this.date,
+  });
 }
 
 class _SuccessView extends StatelessWidget {
@@ -568,8 +596,11 @@ class _SuccessView extends StatelessWidget {
                     color: Color(0xFFEBF8F1),
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(Icons.check_circle,
-                      size: 50, color: AppColors.primary),
+                  child: const Icon(
+                    Icons.check_circle,
+                    size: 50,
+                    color: AppColors.primary,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -603,7 +634,8 @@ class _SuccessView extends StatelessWidget {
                       foregroundColor: Colors.white,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                     child: const Text(
                       'Back to Earnings',

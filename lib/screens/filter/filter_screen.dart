@@ -24,12 +24,7 @@ class _FilterScreenState extends State<FilterScreen> {
     'Rice & Grains',
   ];
 
-  static const _brands = [
-    'Local',
-    'Magnolia',
-    'Organic',
-    'Dagupan',
-  ];
+  static const _brands = ['Local', 'Magnolia', 'Organic', 'Dagupan'];
 
   int get _activeCount {
     int count = 0;
@@ -109,17 +104,15 @@ class _FilterScreenState extends State<FilterScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        _PriceChip(
-                            label:
-                                '₱${_priceRange.start.toInt()}'),
+                        _PriceChip(label: '₱${_priceRange.start.toInt()}'),
                         const Text(
                           '–',
                           style: TextStyle(
-                              color: Color(0xFF9CA3AF), fontSize: 16),
+                            color: Color(0xFF9CA3AF),
+                            fontSize: 16,
+                          ),
                         ),
-                        _PriceChip(
-                            label:
-                                '₱${_priceRange.end.toInt()}'),
+                        _PriceChip(label: '₱${_priceRange.end.toInt()}'),
                       ],
                     ),
                     RangeSlider(
@@ -139,20 +132,21 @@ class _FilterScreenState extends State<FilterScreen> {
                       spacing: 8,
                       runSpacing: 8,
                       children: _categories
-                          .map((cat) => _FilterChip(
-                                label: cat,
-                                isSelected:
-                                    _selectedCategories.contains(cat),
-                                onTap: () {
-                                  setState(() {
-                                    if (_selectedCategories.contains(cat)) {
-                                      _selectedCategories.remove(cat);
-                                    } else {
-                                      _selectedCategories.add(cat);
-                                    }
-                                  });
-                                },
-                              ))
+                          .map(
+                            (cat) => _FilterChip(
+                              label: cat,
+                              isSelected: _selectedCategories.contains(cat),
+                              onTap: () {
+                                setState(() {
+                                  if (_selectedCategories.contains(cat)) {
+                                    _selectedCategories.remove(cat);
+                                  } else {
+                                    _selectedCategories.add(cat);
+                                  }
+                                });
+                              },
+                            ),
+                          )
                           .toList(),
                     ),
                     const SizedBox(height: 20),
@@ -163,20 +157,21 @@ class _FilterScreenState extends State<FilterScreen> {
                       spacing: 8,
                       runSpacing: 8,
                       children: _brands
-                          .map((brand) => _FilterChip(
-                                label: brand,
-                                isSelected:
-                                    _selectedBrands.contains(brand),
-                                onTap: () {
-                                  setState(() {
-                                    if (_selectedBrands.contains(brand)) {
-                                      _selectedBrands.remove(brand);
-                                    } else {
-                                      _selectedBrands.add(brand);
-                                    }
-                                  });
-                                },
-                              ))
+                          .map(
+                            (brand) => _FilterChip(
+                              label: brand,
+                              isSelected: _selectedBrands.contains(brand),
+                              onTap: () {
+                                setState(() {
+                                  if (_selectedBrands.contains(brand)) {
+                                    _selectedBrands.remove(brand);
+                                  } else {
+                                    _selectedBrands.add(brand);
+                                  }
+                                });
+                              },
+                            ),
+                          )
                           .toList(),
                     ),
                     const SizedBox(height: 20),
@@ -187,19 +182,18 @@ class _FilterScreenState extends State<FilterScreen> {
                       children: [0, 3, 4, 5]
                           .map(
                             (r) => GestureDetector(
-                              onTap: () =>
-                                  setState(() => _minRating = r),
+                              onTap: () => setState(() => _minRating = r),
                               child: Container(
-                                margin:
-                                    const EdgeInsets.only(right: 10),
+                                margin: const EdgeInsets.only(right: 10),
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 14, vertical: 8),
+                                  horizontal: 14,
+                                  vertical: 8,
+                                ),
                                 decoration: BoxDecoration(
                                   color: _minRating == r
                                       ? AppColors.primary
                                       : const Color(0xFFF3F4F6),
-                                  borderRadius:
-                                      BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
@@ -337,8 +331,11 @@ class _FilterChip extends StatelessWidget {
   final String label;
   final bool isSelected;
   final VoidCallback onTap;
-  const _FilterChip(
-      {required this.label, required this.isSelected, required this.onTap});
+  const _FilterChip({
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -346,8 +343,7 @@ class _FilterChip extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
-        padding:
-            const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected ? const Color(0xFFEBF8F1) : const Color(0xFFF3F4F6),
           borderRadius: BorderRadius.circular(20),
@@ -361,8 +357,7 @@ class _FilterChip extends StatelessWidget {
           style: TextStyle(
             fontFamily: 'Poppins',
             fontSize: 13,
-            fontWeight:
-                isSelected ? FontWeight.w600 : FontWeight.w400,
+            fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
             color: isSelected ? AppColors.primary : const Color(0xFF374151),
           ),
         ),
@@ -375,8 +370,11 @@ class _ToggleRow extends StatelessWidget {
   final String label;
   final bool value;
   final ValueChanged<bool> onChanged;
-  const _ToggleRow(
-      {required this.label, required this.value, required this.onChanged});
+  const _ToggleRow({
+    required this.label,
+    required this.value,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {

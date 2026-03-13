@@ -9,8 +9,7 @@ class RiderNotificationsScreen extends StatefulWidget {
       _RiderNotificationsScreenState();
 }
 
-class _RiderNotificationsScreenState
-    extends State<RiderNotificationsScreen> {
+class _RiderNotificationsScreenState extends State<RiderNotificationsScreen> {
   // ── Notification toggles ─────────────────────────────────────────────────
   bool _newJobs = true;
   bool _orderUpdates = true;
@@ -34,9 +33,7 @@ class _RiderNotificationsScreenState
       initialTime: isStart ? _quietStart : _quietEnd,
       builder: (ctx, child) => Theme(
         data: Theme.of(ctx).copyWith(
-          colorScheme: const ColorScheme.light(
-            primary: AppColors.primary,
-          ),
+          colorScheme: const ColorScheme.light(primary: AppColors.primary),
         ),
         child: child!,
       ),
@@ -55,8 +52,10 @@ class _RiderNotificationsScreenState
   void _save() {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('Notification settings saved.',
-            style: TextStyle(fontFamily: 'Poppins')),
+        content: Text(
+          'Notification settings saved.',
+          style: TextStyle(fontFamily: 'Poppins'),
+        ),
         behavior: SnackBarBehavior.floating,
         backgroundColor: AppColors.primary,
       ),
@@ -78,8 +77,10 @@ class _RiderNotificationsScreenState
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -113,8 +114,7 @@ class _RiderNotificationsScreenState
                           icon: Icons.work_outline,
                           iconColor: AppColors.primary,
                           title: 'New Job Requests',
-                          subtitle:
-                              'Get notified when new jobs are available',
+                          subtitle: 'Get notified when new jobs are available',
                           value: _newJobs,
                           onChanged: (v) => setState(() => _newJobs = v),
                           important: true,
@@ -124,11 +124,9 @@ class _RiderNotificationsScreenState
                           icon: Icons.receipt_long_outlined,
                           iconColor: const Color(0xFF3B82F6),
                           title: 'Order Updates',
-                          subtitle:
-                              'Status changes and delivery confirmations',
+                          subtitle: 'Status changes and delivery confirmations',
                           value: _orderUpdates,
-                          onChanged: (v) =>
-                              setState(() => _orderUpdates = v),
+                          onChanged: (v) => setState(() => _orderUpdates = v),
                         ),
                         const _SectionDivider(),
                         _NotiTile(
@@ -137,8 +135,7 @@ class _RiderNotificationsScreenState
                           title: 'Chat Messages',
                           subtitle: 'Messages from customers and support',
                           value: _chatMessages,
-                          onChanged: (v) =>
-                              setState(() => _chatMessages = v),
+                          onChanged: (v) => setState(() => _chatMessages = v),
                         ),
                       ],
                     ),
@@ -152,8 +149,7 @@ class _RiderNotificationsScreenState
                           icon: Icons.account_balance_wallet_outlined,
                           iconColor: const Color(0xFFF59E0B),
                           title: 'Earnings & Withdrawals',
-                          subtitle:
-                              'Payment confirmations and wallet updates',
+                          subtitle: 'Payment confirmations and wallet updates',
                           value: _earnings,
                           onChanged: (v) => setState(() => _earnings = v),
                         ),
@@ -171,16 +167,14 @@ class _RiderNotificationsScreenState
                           title: 'Promotions & Bonuses',
                           subtitle: 'Special offers and surge pay alerts',
                           value: _promotions,
-                          onChanged: (v) =>
-                              setState(() => _promotions = v),
+                          onChanged: (v) => setState(() => _promotions = v),
                         ),
                         const _SectionDivider(),
                         _NotiTile(
                           icon: Icons.system_update_outlined,
                           iconColor: const Color(0xFF6B7280),
                           title: 'App Updates',
-                          subtitle:
-                              'New features and important announcements',
+                          subtitle: 'New features and important announcements',
                           value: _appUpdates,
                           onChanged: (v) => setState(() => _appUpdates = v),
                         ),
@@ -232,15 +226,12 @@ class _RiderNotificationsScreenState
                             icon: Icons.do_not_disturb_on_outlined,
                             iconColor: const Color(0xFF374151),
                             title: 'Enable Quiet Hours',
-                            subtitle:
-                                'Silence non-critical notifications',
+                            subtitle: 'Silence non-critical notifications',
                             value: _quietHours,
-                            onChanged: (v) =>
-                                setState(() => _quietHours = v),
+                            onChanged: (v) => setState(() => _quietHours = v),
                           ),
                           if (_quietHours) ...[
-                            const Divider(
-                                height: 1, color: Color(0xFFF3F4F6)),
+                            const Divider(height: 1, color: Color(0xFFF3F4F6)),
                             Padding(
                               padding: const EdgeInsets.all(16),
                               child: Column(
@@ -251,13 +242,13 @@ class _RiderNotificationsScreenState
                                         child: _TimeSelector(
                                           label: 'From',
                                           time: _quietStart,
-                                          onTap: () => _pickTime(
-                                              isStart: true),
+                                          onTap: () => _pickTime(isStart: true),
                                         ),
                                       ),
                                       const Padding(
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: 12),
+                                          horizontal: 12,
+                                        ),
                                         child: Text(
                                           '→',
                                           style: TextStyle(
@@ -271,8 +262,8 @@ class _RiderNotificationsScreenState
                                         child: _TimeSelector(
                                           label: 'Until',
                                           time: _quietEnd,
-                                          onTap: () => _pickTime(
-                                              isStart: false),
+                                          onTap: () =>
+                                              _pickTime(isStart: false),
                                         ),
                                       ),
                                     ],
@@ -306,7 +297,8 @@ class _RiderNotificationsScreenState
                           foregroundColor: Colors.white,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
                         child: const Text(
                           'Save Settings',
@@ -328,7 +320,6 @@ class _RiderNotificationsScreenState
       ),
     );
   }
-
 }
 
 // ── Reusable sub-widgets ──────────────────────────────────────────────────────
@@ -363,10 +354,7 @@ class _ToggleSection extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
-            blurRadius: 6,
-          ),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 6),
         ],
       ),
       child: Column(children: children),
@@ -380,7 +368,11 @@ class _SectionDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Divider(
-        height: 1, indent: 64, endIndent: 16, color: Color(0xFFF3F4F6));
+      height: 1,
+      indent: 64,
+      endIndent: 16,
+      color: Color(0xFFF3F4F6),
+    );
   }
 }
 
@@ -438,7 +430,9 @@ class _NotiTile extends StatelessWidget {
                       const SizedBox(width: 6),
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 6, vertical: 2),
+                          horizontal: 6,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
                           color: const Color(0xFFEBF8F1),
                           borderRadius: BorderRadius.circular(4),
@@ -482,8 +476,11 @@ class _TimeSelector extends StatelessWidget {
   final String label;
   final TimeOfDay time;
   final VoidCallback onTap;
-  const _TimeSelector(
-      {required this.label, required this.time, required this.onTap});
+  const _TimeSelector({
+    required this.label,
+    required this.time,
+    required this.onTap,
+  });
 
   String _fmt(TimeOfDay t) {
     final h = t.hourOfPeriod == 0 ? 12 : t.hourOfPeriod;
@@ -497,8 +494,7 @@ class _TimeSelector extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         decoration: BoxDecoration(
           color: const Color(0xFFF3F4F6),
           borderRadius: BorderRadius.circular(10),

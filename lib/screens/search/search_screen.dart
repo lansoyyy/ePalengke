@@ -37,9 +37,11 @@ class _SearchScreenState extends State<SearchScreen> {
     return products
         .asMap()
         .entries
-        .where((e) =>
-            e.value.name.toLowerCase().contains(q) ||
-            e.value.brand.toLowerCase().contains(q))
+        .where(
+          (e) =>
+              e.value.name.toLowerCase().contains(q) ||
+              e.value.brand.toLowerCase().contains(q),
+        )
         .toList();
   }
 
@@ -83,7 +85,10 @@ class _SearchScreenState extends State<SearchScreen> {
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back, color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   Expanded(
                     child: Container(
@@ -95,8 +100,11 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: Row(
                         children: [
                           const SizedBox(width: 14),
-                          const Icon(Icons.search,
-                              color: Color(0xFF9CA3AF), size: 20),
+                          const Icon(
+                            Icons.search,
+                            color: Color(0xFF9CA3AF),
+                            size: 20,
+                          ),
                           const SizedBox(width: 8),
                           Expanded(
                             child: TextField(
@@ -110,16 +118,16 @@ class _SearchScreenState extends State<SearchScreen> {
                                 color: Color(0xFF111827),
                               ),
                               decoration: const InputDecoration(
-                                hintText:
-                                    'Search meat, veggies, rice...',
+                                hintText: 'Search meat, veggies, rice...',
                                 hintStyle: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 14,
                                   color: Color(0xFF9CA3AF),
                                 ),
                                 border: InputBorder.none,
-                                contentPadding:
-                                    EdgeInsets.symmetric(vertical: 12),
+                                contentPadding: EdgeInsets.symmetric(
+                                  vertical: 12,
+                                ),
                               ),
                             ),
                           ),
@@ -129,8 +137,11 @@ class _SearchScreenState extends State<SearchScreen> {
                                 _controller.clear();
                                 setState(() => _query = '');
                               },
-                              icon: const Icon(Icons.close,
-                                  color: Color(0xFF9CA3AF), size: 18),
+                              icon: const Icon(
+                                Icons.close,
+                                color: Color(0xFF9CA3AF),
+                                size: 18,
+                              ),
                             ),
                         ],
                       ),
@@ -141,8 +152,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (_) => const FilterScreen()),
+                        MaterialPageRoute(builder: (_) => const FilterScreen()),
                       );
                     },
                     child: Container(
@@ -152,8 +162,11 @@ class _SearchScreenState extends State<SearchScreen> {
                         color: const Color(0xFFEBF8F1),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Icon(Icons.tune,
-                          color: AppColors.primary, size: 20),
+                      child: const Icon(
+                        Icons.tune,
+                        color: AppColors.primary,
+                        size: 20,
+                      ),
                     ),
                   ),
                 ],
@@ -162,9 +175,7 @@ class _SearchScreenState extends State<SearchScreen> {
             const SizedBox(height: 4),
             const Divider(height: 1, color: Color(0xFFE5E7EB)),
             Expanded(
-              child: _query.isNotEmpty
-                  ? _buildResults()
-                  : _buildSuggestions(),
+              child: _query.isNotEmpty ? _buildResults() : _buildSuggestions(),
             ),
           ],
         ),
@@ -207,16 +218,17 @@ class _SearchScreenState extends State<SearchScreen> {
               ],
             ),
             const SizedBox(height: 12),
-            ..._recentSearches.map((term) => _SearchTile(
-                  icon: Icons.history,
-                  label: term,
-                  onTap: () {
-                    _controller.text = term;
-                    _submitSearch(term);
-                  },
-                  onRemove: () =>
-                      setState(() => _recentSearches.remove(term)),
-                )),
+            ..._recentSearches.map(
+              (term) => _SearchTile(
+                icon: Icons.history,
+                label: term,
+                onTap: () {
+                  _controller.text = term;
+                  _submitSearch(term);
+                },
+                onRemove: () => setState(() => _recentSearches.remove(term)),
+              ),
+            ),
             const SizedBox(height: 24),
           ],
           // Popular
@@ -242,7 +254,9 @@ class _SearchScreenState extends State<SearchScreen> {
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 14, vertical: 8),
+                        horizontal: 14,
+                        vertical: 8,
+                      ),
                       decoration: BoxDecoration(
                         color: const Color(0xFFF3F4F6),
                         borderRadius: BorderRadius.circular(20),
@@ -250,8 +264,11 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.trending_up,
-                              size: 14, color: AppColors.primary),
+                          const Icon(
+                            Icons.trending_up,
+                            size: 14,
+                            color: AppColors.primary,
+                          ),
                           const SizedBox(width: 6),
                           Text(
                             term,
@@ -353,11 +370,12 @@ class _SearchTile extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
   final VoidCallback? onRemove;
-  const _SearchTile(
-      {required this.icon,
-      required this.label,
-      required this.onTap,
-      this.onRemove});
+  const _SearchTile({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+    this.onRemove,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -375,8 +393,11 @@ class _SearchTile extends StatelessWidget {
       trailing: onRemove != null
           ? GestureDetector(
               onTap: onRemove,
-              child: const Icon(Icons.close,
-                  size: 16, color: Color(0xFF9CA3AF)),
+              child: const Icon(
+                Icons.close,
+                size: 16,
+                color: Color(0xFF9CA3AF),
+              ),
             )
           : null,
       onTap: onTap,
@@ -410,8 +431,11 @@ class _ProductListTile extends StatelessWidget {
                 color: product.imageColor,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Icon(product.imageIcon,
-                  size: 28, color: Colors.white.withValues(alpha: 0.2)),
+              child: Icon(
+                product.imageIcon,
+                size: 28,
+                color: Colors.white.withValues(alpha: 0.2),
+              ),
             ),
             const SizedBox(width: 14),
             Expanded(
@@ -462,8 +486,7 @@ class _ProductListTile extends StatelessWidget {
             ),
             if (product.isFresh)
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
                   color: AppColors.successLight,
                   borderRadius: BorderRadius.circular(6),

@@ -36,8 +36,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     ),
   ];
 
-  double get _subtotal => widget.cartItems.entries.fold(
-      0, (sum, e) => sum + e.key.price * e.value);
+  double get _subtotal =>
+      widget.cartItems.entries.fold(0, (sum, e) => sum + e.key.price * e.value);
 
   double get _deliveryFee => _selectedDelivery == 0 ? 45 : 80;
   double get _serviceFee => 15;
@@ -53,8 +53,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       });
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Promo code applied! ₱50 discount.',
-              style: TextStyle(fontFamily: 'Poppins')),
+          content: Text(
+            'Promo code applied! ₱50 discount.',
+            style: TextStyle(fontFamily: 'Poppins'),
+          ),
           backgroundColor: AppColors.primary,
           behavior: SnackBarBehavior.floating,
         ),
@@ -86,8 +88,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -131,8 +135,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           final addr = entry.value;
                           final isSelected = _selectedAddress == entry.key;
                           return GestureDetector(
-                            onTap: () => setState(
-                                () => _selectedAddress = entry.key),
+                            onTap: () =>
+                                setState(() => _selectedAddress = entry.key),
                             child: Container(
                               margin: const EdgeInsets.only(top: 10),
                               padding: const EdgeInsets.all(14),
@@ -180,8 +184,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                               Container(
                                                 padding:
                                                     const EdgeInsets.symmetric(
-                                                        horizontal: 6,
-                                                        vertical: 2),
+                                                      horizontal: 6,
+                                                      vertical: 2,
+                                                    ),
                                                 decoration: BoxDecoration(
                                                   color: AppColors.primary,
                                                   borderRadius:
@@ -270,24 +275,21 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             subtitle: 'Pay via GCash wallet',
                             icon: '💚',
                             isSelected: _selectedPayment == 0,
-                            onTap: () =>
-                                setState(() => _selectedPayment = 0),
+                            onTap: () => setState(() => _selectedPayment = 0),
                           ),
                           _PaymentOption(
                             label: 'Cash on Delivery',
                             subtitle: 'Pay when received',
                             icon: '💵',
                             isSelected: _selectedPayment == 1,
-                            onTap: () =>
-                                setState(() => _selectedPayment = 1),
+                            onTap: () => setState(() => _selectedPayment = 1),
                           ),
                           _PaymentOption(
                             label: 'Credit / Debit Card',
                             subtitle: 'Visa, Mastercard, JCB',
                             icon: '💳',
                             isSelected: _selectedPayment == 2,
-                            onTap: () =>
-                                setState(() => _selectedPayment = 2),
+                            onTap: () => setState(() => _selectedPayment = 2),
                           ),
                         ],
                       ),
@@ -300,8 +302,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         children: [
                           ...widget.cartItems.entries.map(
                             (e) => Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 6),
+                              padding: const EdgeInsets.symmetric(vertical: 6),
                               child: Row(
                                 children: [
                                   Container(
@@ -309,13 +310,15 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                     height: 40,
                                     decoration: BoxDecoration(
                                       color: e.key.imageColor,
-                                      borderRadius:
-                                          BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    child: Icon(e.key.imageIcon,
-                                        size: 18,
-                                        color: Colors.white
-                                            .withValues(alpha: 0.2)),
+                                    child: Icon(
+                                      e.key.imageIcon,
+                                      size: 18,
+                                      color: Colors.white.withValues(
+                                        alpha: 0.2,
+                                      ),
+                                    ),
                                   ),
                                   const SizedBox(width: 10),
                                   Expanded(
@@ -356,30 +359,28 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                               ),
                             ),
                           ),
-                          const Divider(
-                              color: Color(0xFFE5E7EB), height: 20),
+                          const Divider(color: Color(0xFFE5E7EB), height: 20),
                           _SummaryRow(
-                              label: 'Subtotal',
-                              value:
-                                  '₱${_subtotal.toStringAsFixed(0)}'),
+                            label: 'Subtotal',
+                            value: '₱${_subtotal.toStringAsFixed(0)}',
+                          ),
                           _SummaryRow(
-                              label: 'Delivery Fee',
-                              value:
-                                  '₱${_deliveryFee.toStringAsFixed(0)}'),
+                            label: 'Delivery Fee',
+                            value: '₱${_deliveryFee.toStringAsFixed(0)}',
+                          ),
                           _SummaryRow(
-                              label: 'Service Fee',
-                              value:
-                                  '₱${_serviceFee.toStringAsFixed(0)}'),
+                            label: 'Service Fee',
+                            value: '₱${_serviceFee.toStringAsFixed(0)}',
+                          ),
                           if (_appliedPromo != null)
                             _SummaryRow(
-                                label: 'Promo ($_appliedPromo)',
-                                value: '-₱${_discount.toStringAsFixed(0)}',
-                                valueColor: AppColors.success),
-                          const Divider(
-                              color: Color(0xFFE5E7EB), height: 16),
+                              label: 'Promo ($_appliedPromo)',
+                              value: '-₱${_discount.toStringAsFixed(0)}',
+                              valueColor: AppColors.success,
+                            ),
+                          const Divider(color: Color(0xFFE5E7EB), height: 16),
                           Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
                                 'TOTAL',
@@ -435,8 +436,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                     filled: true,
                                     fillColor: const Color(0xFFF9FAFB),
                                     border: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(
                                         color: _promoError
                                             ? AppColors.error
@@ -444,17 +444,17 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                       ),
                                     ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(
                                         color: _promoError
                                             ? AppColors.error
                                             : const Color(0xFFE5E7EB),
                                       ),
                                     ),
-                                    contentPadding:
-                                        const EdgeInsets.symmetric(
-                                            horizontal: 14, vertical: 12),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 14,
+                                      vertical: 12,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -468,8 +468,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                     foregroundColor: Colors.white,
                                     elevation: 0,
                                     shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
                                   ),
                                   child: const Text(
                                     'Apply',
@@ -511,8 +511,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           color: Color(0xFF374151),
                         ),
                         decoration: InputDecoration(
-                          hintText:
-                              'e.g. Please ring the doorbell twice...',
+                          hintText: 'e.g. Please ring the doorbell twice...',
                           hintStyle: const TextStyle(
                             fontFamily: 'Poppins',
                             fontSize: 13,
@@ -523,12 +522,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: const BorderSide(
-                                color: Color(0xFFE5E7EB)),
+                              color: Color(0xFFE5E7EB),
+                            ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: const BorderSide(
-                                color: Color(0xFFE5E7EB)),
+                              color: Color(0xFFE5E7EB),
+                            ),
                           ),
                           contentPadding: const EdgeInsets.all(14),
                         ),
@@ -585,7 +586,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     foregroundColor: Colors.white,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14)),
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                   ),
                   child: Text(
                     'Place Order  ₱${_total.toStringAsFixed(0)}',
@@ -612,19 +614,19 @@ class _Address {
   final String line1;
   final String city;
   final String phone;
-  const _Address(
-      {required this.label,
-      required this.line1,
-      required this.city,
-      required this.phone});
+  const _Address({
+    required this.label,
+    required this.line1,
+    required this.city,
+    required this.phone,
+  });
 }
 
 class _SectionCard extends StatelessWidget {
   final String title;
   final Widget child;
   final Widget? trailing;
-  const _SectionCard(
-      {required this.title, required this.child, this.trailing});
+  const _SectionCard({required this.title, required this.child, this.trailing});
 
   @override
   Widget build(BuildContext context) {
@@ -663,7 +665,11 @@ class _SummaryRow extends StatelessWidget {
   final String label;
   final String value;
   final Color? valueColor;
-  const _SummaryRow({required this.label, required this.value, this.valueColor});
+  const _SummaryRow({
+    required this.label,
+    required this.value,
+    this.valueColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -719,8 +725,7 @@ class _DeliveryOption extends StatelessWidget {
         duration: const Duration(milliseconds: 150),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color:
-              isSelected ? const Color(0xFFEBF8F1) : const Color(0xFFF9FAFB),
+          color: isSelected ? const Color(0xFFEBF8F1) : const Color(0xFFF9FAFB),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: isSelected ? AppColors.primary : const Color(0xFFE5E7EB),
@@ -731,11 +736,13 @@ class _DeliveryOption extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(icon,
-                    size: 18,
-                    color: isSelected
-                        ? AppColors.primary
-                        : const Color(0xFF9CA3AF)),
+                Icon(
+                  icon,
+                  size: 18,
+                  color: isSelected
+                      ? AppColors.primary
+                      : const Color(0xFF9CA3AF),
+                ),
                 const SizedBox(width: 6),
                 Text(
                   label,
@@ -825,9 +832,7 @@ class _PaymentOption extends StatelessWidget {
               ),
             ),
             Icon(
-              isSelected
-                  ? Icons.radio_button_checked
-                  : Icons.radio_button_off,
+              isSelected ? Icons.radio_button_checked : Icons.radio_button_off,
               color: isSelected ? AppColors.primary : const Color(0xFF9CA3AF),
               size: 22,
             ),

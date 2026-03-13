@@ -71,7 +71,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back, color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -89,7 +92,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     onPressed: () => setState(() => _isFavorite = !_isFavorite),
                     icon: Icon(
                       _isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: _isFavorite ? AppColors.error : const Color(0xFF374151),
+                      color: _isFavorite
+                          ? AppColors.error
+                          : const Color(0xFF374151),
                       size: 24,
                     ),
                   ),
@@ -121,7 +126,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               left: 16,
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 5),
+                                  horizontal: 10,
+                                  vertical: 5,
+                                ),
                                 decoration: BoxDecoration(
                                   color: AppColors.primary,
                                   borderRadius: BorderRadius.circular(20),
@@ -143,7 +150,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             right: 16,
                             child: Container(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
+                                horizontal: 10,
+                                vertical: 5,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.black.withValues(alpha: 0.4),
                                 borderRadius: BorderRadius.circular(20),
@@ -171,7 +180,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                 (i) => Container(
                                   width: i == 0 ? 18 : 6,
                                   height: 6,
-                                  margin: const EdgeInsets.symmetric(horizontal: 2),
+                                  margin: const EdgeInsets.symmetric(
+                                    horizontal: 2,
+                                  ),
                                   decoration: BoxDecoration(
                                     color: i == 0
                                         ? AppColors.primary
@@ -242,7 +253,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               if (product.changePercent != null)
                                 Container(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 8, vertical: 3),
+                                    horizontal: 8,
+                                    vertical: 3,
+                                  ),
                                   decoration: BoxDecoration(
                                     color: product.changePercent! > 0
                                         ? AppColors.errorLight
@@ -299,8 +312,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           _SpecRow(label: 'Unit', value: product.unit),
                           _SpecRow(label: 'Origin', value: 'Local Market'),
                           _SpecRow(
-                              label: 'Fresh',
-                              value: product.isFresh ? 'Yes (Daily)' : 'Standard'),
+                            label: 'Fresh',
+                            value: product.isFresh ? 'Yes (Daily)' : 'Standard',
+                          ),
                           _SpecRow(label: 'Availability', value: 'In Stock'),
                           const SizedBox(height: 22),
                           // ── Reviews ──────────────────────────────────────
@@ -346,10 +360,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             ],
                           ),
                           const SizedBox(height: 12),
-                          ..._reviews.map((r) => Padding(
-                                padding: const EdgeInsets.only(bottom: 14),
-                                child: _ReviewCard(review: r),
-                              )),
+                          ..._reviews.map(
+                            (r) => Padding(
+                              padding: const EdgeInsets.only(bottom: 14),
+                              child: _ReviewCard(review: r),
+                            ),
+                          ),
                           const SizedBox(height: 8),
                           // ── Similar products ──────────────────────────────
                           const Text(
@@ -381,8 +397,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       MaterialPageRoute(
                                         builder: (_) => ProductDetailsScreen(
                                           product: similar,
-                                          initialIndex: products
-                                              .indexOf(similar),
+                                          initialIndex: products.indexOf(
+                                            similar,
+                                          ),
                                         ),
                                       ),
                                     );
@@ -393,7 +410,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                       color: const Color(0xFFF9FAFB),
                                       borderRadius: BorderRadius.circular(12),
                                       border: Border.all(
-                                          color: const Color(0xFFE5E7EB)),
+                                        color: const Color(0xFFE5E7EB),
+                                      ),
                                     ),
                                     child: Column(
                                       children: [
@@ -403,20 +421,26 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                             color: similar.imageColor,
                                             borderRadius:
                                                 const BorderRadius.vertical(
-                                                    top: Radius.circular(11)),
+                                                  top: Radius.circular(11),
+                                                ),
                                           ),
                                           child: Center(
                                             child: Icon(
                                               similar.imageIcon,
                                               size: 34,
-                                              color: Colors.white
-                                                  .withValues(alpha: 0.2),
+                                              color: Colors.white.withValues(
+                                                alpha: 0.2,
+                                              ),
                                             ),
                                           ),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.fromLTRB(
-                                              8, 6, 8, 4),
+                                            8,
+                                            6,
+                                            8,
+                                            4,
+                                          ),
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
@@ -619,11 +643,12 @@ class _Review {
   final int rating;
   final String comment;
   final String date;
-  const _Review(
-      {required this.user,
-      required this.rating,
-      required this.comment,
-      required this.date});
+  const _Review({
+    required this.user,
+    required this.rating,
+    required this.comment,
+    required this.date,
+  });
 }
 
 class _ReviewCard extends StatelessWidget {

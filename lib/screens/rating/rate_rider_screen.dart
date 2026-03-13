@@ -28,8 +28,10 @@ class _RateRiderScreenState extends State<RateRiderScreen> {
     if (_overallRating == 0) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Please select an overall rating.',
-              style: TextStyle(fontFamily: 'Poppins')),
+          content: Text(
+            'Please select an overall rating.',
+            style: TextStyle(fontFamily: 'Poppins'),
+          ),
           backgroundColor: AppColors.warning,
           behavior: SnackBarBehavior.floating,
         ),
@@ -43,9 +45,7 @@ class _RateRiderScreenState extends State<RateRiderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: SafeArea(
-        child: _submitted ? _buildThankYou() : _buildForm(),
-      ),
+      body: SafeArea(child: _submitted ? _buildThankYou() : _buildForm()),
     );
   }
 
@@ -63,8 +63,11 @@ class _RateRiderScreenState extends State<RateRiderScreen> {
                 color: AppColors.successLight,
                 borderRadius: BorderRadius.circular(22),
               ),
-              child: const Icon(Icons.check_circle_outline,
-                  size: 48, color: AppColors.success),
+              child: const Icon(
+                Icons.check_circle_outline,
+                size: 48,
+                color: AppColors.success,
+              ),
             ),
             const SizedBox(height: 24),
             const Text(
@@ -98,7 +101,8 @@ class _RateRiderScreenState extends State<RateRiderScreen> {
                   foregroundColor: Colors.white,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
                 child: const Text(
                   'Back to Orders',
@@ -177,8 +181,7 @@ class _RateRiderScreenState extends State<RateRiderScreen> {
                           shape: BoxShape.circle,
                         ),
                         child: const Center(
-                          child:
-                              Text('🏍️', style: TextStyle(fontSize: 28)),
+                          child: Text('🏍️', style: TextStyle(fontSize: 28)),
                         ),
                       ),
                       const SizedBox(width: 14),
@@ -224,11 +227,9 @@ class _RateRiderScreenState extends State<RateRiderScreen> {
                   children: List.generate(
                     5,
                     (i) => GestureDetector(
-                      onTap: () =>
-                          setState(() => _overallRating = i + 1),
+                      onTap: () => setState(() => _overallRating = i + 1),
                       child: Padding(
-                        padding:
-                            const EdgeInsets.symmetric(horizontal: 6),
+                        padding: const EdgeInsets.symmetric(horizontal: 6),
                         child: Icon(
                           i < _overallRating
                               ? Icons.star_rounded
@@ -251,7 +252,7 @@ class _RateRiderScreenState extends State<RateRiderScreen> {
                       'Fair',
                       'Good',
                       'Great',
-                      'Excellent!'
+                      'Excellent!',
                     ][_overallRating],
                     style: const TextStyle(
                       fontFamily: 'Poppins',
@@ -296,15 +297,14 @@ class _RateRiderScreenState extends State<RateRiderScreen> {
                           children: List.generate(
                             5,
                             (i) => GestureDetector(
-                              onTap: () => setState(
-                                  () => _categoryRatings[cat] = i + 1),
+                              onTap: () =>
+                                  setState(() => _categoryRatings[cat] = i + 1),
                               child: Icon(
                                 i < (_categoryRatings[cat] ?? 0)
                                     ? Icons.star_rounded
                                     : Icons.star_border_rounded,
                                 size: 26,
-                                color: i <
-                                        (_categoryRatings[cat] ?? 0)
+                                color: i < (_categoryRatings[cat] ?? 0)
                                     ? const Color(0xFFFBBF24)
                                     : const Color(0xFFD1D5DB),
                               ),
@@ -339,8 +339,7 @@ class _RateRiderScreenState extends State<RateRiderScreen> {
                     color: Color(0xFF374151),
                   ),
                   decoration: InputDecoration(
-                    hintText:
-                        'Share your experience with this rider...',
+                    hintText: 'Share your experience with this rider...',
                     hintStyle: const TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 13,
@@ -350,13 +349,11 @@ class _RateRiderScreenState extends State<RateRiderScreen> {
                     fillColor: const Color(0xFFF9FAFB),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide:
-                          const BorderSide(color: Color(0xFFE5E7EB)),
+                      borderSide: const BorderSide(color: Color(0xFFE5E7EB)),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide:
-                          const BorderSide(color: Color(0xFFE5E7EB)),
+                      borderSide: const BorderSide(color: Color(0xFFE5E7EB)),
                     ),
                     contentPadding: const EdgeInsets.all(14),
                   ),
@@ -379,7 +376,8 @@ class _RateRiderScreenState extends State<RateRiderScreen> {
                 foregroundColor: Colors.white,
                 elevation: 0,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
               child: const Text(
                 'Submit Rating',

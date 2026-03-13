@@ -555,42 +555,41 @@ class _SettingsRow extends StatelessWidget {
   final String label;
   final VoidCallback? onTap;
 
-  const _SettingsRow({required this.icon, required this.label, this.onTap})
-      ;
+  const _SettingsRow({required this.icon, required this.label, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      child: Row(
-        children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: const Color(0xFFEBF8F1),
-              borderRadius: BorderRadius.circular(8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        child: Row(
+          children: [
+            Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                color: const Color(0xFFEBF8F1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(icon, size: 18, color: AppColors.primary),
             ),
-            child: Icon(icon, size: 18, color: AppColors.primary),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Text(
-              label,
-              style: const TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Color(0xFF111827),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Text(
+                label,
+                style: const TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF111827),
+                ),
               ),
             ),
-          ),
-          const Icon(Icons.chevron_right, size: 20, color: Color(0xFF9CA3AF)),
-        ],
-      ),
-    ), // Padding
+            const Icon(Icons.chevron_right, size: 20, color: Color(0xFF9CA3AF)),
+          ],
+        ),
+      ), // Padding
     ); // InkWell
   }
 }

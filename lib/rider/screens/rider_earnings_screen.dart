@@ -94,8 +94,10 @@ class _RiderEarningsScreenState extends State<RiderEarningsScreen>
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -111,8 +113,11 @@ class _RiderEarningsScreenState extends State<RiderEarningsScreen>
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: const Icon(Icons.calendar_month_outlined,
-                        color: Color(0xFF374151), size: 22),
+                    icon: const Icon(
+                      Icons.calendar_month_outlined,
+                      color: Color(0xFF374151),
+                      size: 22,
+                    ),
                   ),
                 ],
               ),
@@ -153,13 +158,16 @@ class _RiderEarningsScreenState extends State<RiderEarningsScreen>
                             height: 48,
                             child: ElevatedButton.icon(
                               onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (_) =>
-                                      const RiderWithdrawScreen(),
-                                ));
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (_) => const RiderWithdrawScreen(),
+                                  ),
+                                );
                               },
-                              icon: const Icon(Icons.account_balance_wallet,
-                                  size: 18),
+                              icon: const Icon(
+                                Icons.account_balance_wallet,
+                                size: 18,
+                              ),
                               label: const Text(
                                 'Withdraw Earnings',
                                 style: TextStyle(
@@ -172,8 +180,8 @@ class _RiderEarningsScreenState extends State<RiderEarningsScreen>
                                 foregroundColor: Colors.white,
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(12)),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
                               ),
                             ),
                           ),
@@ -242,8 +250,7 @@ class _RiderEarningsScreenState extends State<RiderEarningsScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
                                 'Earnings Trend',
@@ -256,7 +263,9 @@ class _RiderEarningsScreenState extends State<RiderEarningsScreen>
                               ),
                               Container(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 4),
+                                  horizontal: 10,
+                                  vertical: 4,
+                                ),
                                 decoration: BoxDecoration(
                                   color: const Color(0xFFF3F4F6),
                                   borderRadius: BorderRadius.circular(6),
@@ -277,8 +286,7 @@ class _RiderEarningsScreenState extends State<RiderEarningsScreen>
                           _BarChart(),
                           const SizedBox(height: 12),
                           const Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               _BarLabel('Mon'),
                               _BarLabel('Tue'),
@@ -321,14 +329,15 @@ class _RiderEarningsScreenState extends State<RiderEarningsScreen>
                               ),
                             ),
                           ),
-                          const Divider(
-                              height: 1, color: Color(0xFFF3F4F6)),
+                          const Divider(height: 1, color: Color(0xFFF3F4F6)),
                           ListView.separated(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: _transactions.length,
                             separatorBuilder: (_, __) => const Divider(
-                                height: 1, color: Color(0xFFF3F4F6)),
+                              height: 1,
+                              color: Color(0xFFF3F4F6),
+                            ),
                             itemBuilder: (_, i) =>
                                 _TransactionRow(_transactions[i]),
                           ),
@@ -371,10 +380,7 @@ class _EarnCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
-            blurRadius: 4,
-          ),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 4),
         ],
       ),
       child: Row(
@@ -429,11 +435,15 @@ class _EarnCard extends StatelessWidget {
 }
 
 class _BarChart extends StatelessWidget {
-  final List<double> _heights = const [
-    0.4, 0.65, 0.5, 0.85, 0.7, 1.0, 0.45
-  ];
+  final List<double> _heights = const [0.4, 0.65, 0.5, 0.85, 0.7, 1.0, 0.45];
   final List<bool> _isToday = const [
-    false, false, false, false, false, false, true
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true,
   ];
 
   const _BarChart();
@@ -507,8 +517,11 @@ class _TransactionRow extends StatelessWidget {
               color: const Color(0xFFEBF8F1),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: const Icon(Icons.local_shipping_outlined,
-                size: 20, color: AppColors.primary),
+            child: const Icon(
+              Icons.local_shipping_outlined,
+              size: 20,
+              color: AppColors.primary,
+            ),
           ),
           const SizedBox(width: 12),
           Expanded(

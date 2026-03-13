@@ -5,8 +5,7 @@ class RiderNavigationScreen extends StatefulWidget {
   const RiderNavigationScreen({super.key});
 
   @override
-  State<RiderNavigationScreen> createState() =>
-      _RiderNavigationScreenState();
+  State<RiderNavigationScreen> createState() => _RiderNavigationScreenState();
 }
 
 class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
@@ -49,11 +48,7 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
         child: Stack(
           children: [
             // ── Map placeholder ────────────────────────────────────────────
-            Positioned.fill(
-              child: CustomPaint(
-                painter: _MapPainter(),
-              ),
-            ),
+            Positioned.fill(child: CustomPaint(painter: _MapPainter())),
             // ── Top overlay ────────────────────────────────────────────────
             Positioned(
               top: 0,
@@ -75,19 +70,20 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                   children: [
                     // ── Header ─────────────────────────────────────────────
                     Padding(
-                      padding:
-                          const EdgeInsets.fromLTRB(8, 10, 14, 10),
+                      padding: const EdgeInsets.fromLTRB(8, 10, 14, 10),
                       child: Row(
                         children: [
                           IconButton(
                             onPressed: () => Navigator.of(context).pop(),
-                            icon: const Icon(Icons.arrow_back,
-                                color: Color(0xFF111827), size: 22),
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Color(0xFF111827),
+                              size: 22,
+                            ),
                           ),
                           Expanded(
                             child: Column(
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: const [
                                 Text(
                                   '123 Mapagmahal St., QC',
@@ -120,8 +116,11 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                             ),
                             child: IconButton(
                               onPressed: () {},
-                              icon: const Icon(Icons.call,
-                                  size: 18, color: AppColors.primary),
+                              icon: const Icon(
+                                Icons.call,
+                                size: 18,
+                                color: AppColors.primary,
+                              ),
                               padding: EdgeInsets.zero,
                             ),
                           ),
@@ -131,11 +130,14 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                     // ── ETA row ────────────────────────────────────────────
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 14, vertical: 12),
+                        horizontal: 14,
+                        vertical: 12,
+                      ),
                       decoration: const BoxDecoration(
                         color: AppColors.primary,
                         borderRadius: BorderRadius.vertical(
-                            bottom: Radius.circular(14)),
+                          bottom: Radius.circular(14),
+                        ),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -146,18 +148,20 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                             icon: Icons.access_time,
                           ),
                           Container(
-                              width: 1,
-                              height: 30,
-                              color: Colors.white30),
+                            width: 1,
+                            height: 30,
+                            color: Colors.white30,
+                          ),
                           _EtaTile(
                             label: 'Distance',
                             value: '2.3 km',
                             icon: Icons.straighten,
                           ),
                           Container(
-                              width: 1,
-                              height: 30,
-                              color: Colors.white30),
+                            width: 1,
+                            height: 30,
+                            color: Colors.white30,
+                          ),
                           _EtaTile(
                             label: 'Order',
                             value: '#EP-89231',
@@ -183,7 +187,8 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                     decoration: BoxDecoration(
                       color: const Color(0xFF1E293B),
                       borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(14)),
+                        top: Radius.circular(14),
+                      ),
                     ),
                     child: Row(
                       children: [
@@ -244,23 +249,24 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                     decoration: const BoxDecoration(
                       color: Color(0xFF0F172A),
                       borderRadius: BorderRadius.vertical(
-                          bottom: Radius.circular(14)),
+                        bottom: Radius.circular(14),
+                      ),
                     ),
                     child: ListView.separated(
                       shrinkWrap: true,
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 14, vertical: 8),
+                        horizontal: 14,
+                        vertical: 8,
+                      ),
                       itemCount: _steps.length,
-                      separatorBuilder: (_, __) => const Divider(
-                          height: 1, color: Color(0xFF1E293B)),
+                      separatorBuilder: (_, __) =>
+                          const Divider(height: 1, color: Color(0xFF1E293B)),
                       itemBuilder: (_, i) {
                         final active = i == _currentStep;
                         return GestureDetector(
-                          onTap: () =>
-                              setState(() => _currentStep = i),
+                          onTap: () => setState(() => _currentStep = i),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 10),
+                            padding: const EdgeInsets.symmetric(vertical: 10),
                             child: Row(
                               children: [
                                 Icon(
@@ -312,8 +318,10 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                           height: 52,
                           child: OutlinedButton.icon(
                             onPressed: () {},
-                            icon: const Icon(Icons.navigation_outlined,
-                                size: 18),
+                            icon: const Icon(
+                              Icons.navigation_outlined,
+                              size: 18,
+                            ),
                             label: const Text(
                               'Google Maps',
                               style: TextStyle(
@@ -324,13 +332,11 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                             ),
                             style: OutlinedButton.styleFrom(
                               backgroundColor: Colors.white,
-                              foregroundColor:
-                                  const Color(0xFF374151),
-                              side: const BorderSide(
-                                  color: Color(0xFFE5E7EB)),
+                              foregroundColor: const Color(0xFF374151),
+                              side: const BorderSide(color: Color(0xFFE5E7EB)),
                               shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(12)),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
                             ),
                           ),
                         ),
@@ -340,11 +346,11 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                         child: SizedBox(
                           height: 52,
                           child: ElevatedButton.icon(
-                            onPressed: () =>
-                                setState(() => _arrived = true),
+                            onPressed: () => setState(() => _arrived = true),
                             icon: const Icon(
-                                Icons.check_circle_outline,
-                                size: 18),
+                              Icons.check_circle_outline,
+                              size: 18,
+                            ),
                             label: const Text(
                               'I Arrived',
                               style: TextStyle(
@@ -358,8 +364,8 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                               foregroundColor: Colors.white,
                               elevation: 0,
                               shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(12)),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
                             ),
                           ),
                         ),
@@ -376,8 +382,7 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                   color: Colors.black87,
                   child: Center(
                     child: Container(
-                      margin:
-                          const EdgeInsets.symmetric(horizontal: 32),
+                      margin: const EdgeInsets.symmetric(horizontal: 32),
                       padding: const EdgeInsets.all(28),
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -386,8 +391,11 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.check_circle,
-                              size: 64, color: AppColors.primary),
+                          const Icon(
+                            Icons.check_circle,
+                            size: 64,
+                            color: AppColors.primary,
+                          ),
                           const SizedBox(height: 16),
                           const Text(
                             'You\'ve Arrived!',
@@ -413,15 +421,14 @@ class _RiderNavigationScreenState extends State<RiderNavigationScreen> {
                             width: double.infinity,
                             height: 48,
                             child: ElevatedButton(
-                              onPressed: () =>
-                                  Navigator.of(context).pop(),
+                              onPressed: () => Navigator.of(context).pop(),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: AppColors.primary,
                                 foregroundColor: Colors.white,
                                 elevation: 0,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(10)),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                               ),
                               child: const Text(
                                 'Mark as Delivered',
@@ -449,8 +456,11 @@ class _EtaTile extends StatelessWidget {
   final String label;
   final String value;
   final IconData icon;
-  const _EtaTile(
-      {required this.label, required this.value, required this.icon});
+  const _EtaTile({
+    required this.label,
+    required this.value,
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -554,11 +564,7 @@ class _MapPainter extends CustomPainter {
       12,
       riderPaint,
     );
-    canvas.drawCircle(
-      Offset(size.width / 2, size.height * 0.7),
-      5,
-      innerPaint,
-    );
+    canvas.drawCircle(Offset(size.width / 2, size.height * 0.7), 5, innerPaint);
   }
 
   @override

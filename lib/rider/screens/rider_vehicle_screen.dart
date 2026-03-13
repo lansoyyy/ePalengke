@@ -25,7 +25,7 @@ class _RiderVehicleScreenState extends State<RiderVehicleScreen> {
       _modelCtrl,
       _yearCtrl,
       _plateCtrl,
-      _colorCtrl
+      _colorCtrl,
     ]) {
       c.dispose();
     }
@@ -42,8 +42,10 @@ class _RiderVehicleScreenState extends State<RiderVehicleScreen> {
     setState(() => _editMode = false);
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('Vehicle information saved.',
-            style: TextStyle(fontFamily: 'Poppins')),
+        content: Text(
+          'Vehicle information saved.',
+          style: TextStyle(fontFamily: 'Poppins'),
+        ),
         behavior: SnackBarBehavior.floating,
         backgroundColor: AppColors.primary,
       ),
@@ -65,8 +67,10 @@ class _RiderVehicleScreenState extends State<RiderVehicleScreen> {
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -134,22 +138,20 @@ class _RiderVehicleScreenState extends State<RiderVehicleScreen> {
                               return Expanded(
                                 child: GestureDetector(
                                   onTap: _editMode
-                                      ? () => setState(
-                                          () => _vehicleType = i)
+                                      ? () => setState(() => _vehicleType = i)
                                       : null,
                                   child: Container(
                                     margin: EdgeInsets.only(
-                                        right: i < _types.length - 1
-                                            ? 8
-                                            : 0),
+                                      right: i < _types.length - 1 ? 8 : 0,
+                                    ),
                                     padding: const EdgeInsets.symmetric(
-                                        vertical: 12),
+                                      vertical: 12,
+                                    ),
                                     decoration: BoxDecoration(
                                       color: selected
                                           ? const Color(0xFFEBF8F1)
                                           : const Color(0xFFF9FAFB),
-                                      borderRadius:
-                                          BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(10),
                                       border: Border.all(
                                         color: selected
                                             ? AppColors.primary
@@ -161,8 +163,7 @@ class _RiderVehicleScreenState extends State<RiderVehicleScreen> {
                                       children: [
                                         Text(
                                           _types[i].icon,
-                                          style: const TextStyle(
-                                              fontSize: 26),
+                                          style: const TextStyle(fontSize: 26),
                                         ),
                                         const SizedBox(height: 6),
                                         Text(
@@ -176,8 +177,7 @@ class _RiderVehicleScreenState extends State<RiderVehicleScreen> {
                                                 : FontWeight.w400,
                                             color: selected
                                                 ? AppColors.primary
-                                                : const Color(
-                                                    0xFF6B7280),
+                                                : const Color(0xFF6B7280),
                                           ),
                                         ),
                                       ],
@@ -324,8 +324,8 @@ class _RiderVehicleScreenState extends State<RiderVehicleScreen> {
                             foregroundColor: Colors.white,
                             elevation: 0,
                             shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(12)),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                           ),
                           child: const Text(
                             'Save Changes',
@@ -396,25 +396,23 @@ class _VehicleField extends StatelessWidget {
             ),
             decoration: InputDecoration(
               filled: true,
-              fillColor:
-                  readOnly ? const Color(0xFFF9FAFB) : Colors.white,
+              fillColor: readOnly ? const Color(0xFFF9FAFB) : Colors.white,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide:
-                    const BorderSide(color: Color(0xFFE5E7EB)),
+                borderSide: const BorderSide(color: Color(0xFFE5E7EB)),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide:
-                    const BorderSide(color: Color(0xFFE5E7EB)),
+                borderSide: const BorderSide(color: Color(0xFFE5E7EB)),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide:
-                    const BorderSide(color: AppColors.primary),
+                borderSide: const BorderSide(color: AppColors.primary),
               ),
               contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 14, vertical: 12),
+                horizontal: 14,
+                vertical: 12,
+              ),
             ),
           ),
         ],
@@ -446,8 +444,11 @@ class _PhotoSlot extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.add_a_photo_outlined,
-                    size: 24, color: Color(0xFFD1D5DB)),
+                const Icon(
+                  Icons.add_a_photo_outlined,
+                  size: 24,
+                  color: Color(0xFFD1D5DB),
+                ),
                 const SizedBox(height: 6),
                 Text(
                   label,

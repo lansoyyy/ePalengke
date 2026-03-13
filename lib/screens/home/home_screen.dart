@@ -228,8 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (_) =>
-                                    const CustomerProfileScreen(),
+                                builder: (_) => const CustomerProfileScreen(),
                               ),
                             );
                           },
@@ -534,154 +533,154 @@ class _ProductCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.07),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Image section
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(16),
-                ),
-                child: Container(
-                  height: 130,
-                  width: double.infinity,
-                  color: product.imageColor,
-                  child: Center(
-                    child: Text(
-                      _getProductEmoji(product.name),
-                      style: const TextStyle(fontSize: 52),
-                    ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.07),
+              blurRadius: 10,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Image section
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(16),
                   ),
-                ),
-              ),
-              if (product.isFresh)
-                Positioned(
-                  top: 10,
-                  left: 10,
                   child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: const Text(
-                      'FRESH',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 10,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                        letterSpacing: 0.5,
+                    height: 130,
+                    width: double.infinity,
+                    color: product.imageColor,
+                    child: Center(
+                      child: Text(
+                        _getProductEmoji(product.name),
+                        style: const TextStyle(fontSize: 52),
                       ),
                     ),
                   ),
                 ),
-            ],
-          ),
-          // Info section
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product.name,
-                    style: const TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xFF111827),
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    '${product.unit} • ${product.brand}',
-                    style: const TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 11,
-                      color: Color(0xFF9CA3AF),
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        '₱${product.price.toStringAsFixed(2)}',
-                        style: const TextStyle(
+                if (product.isFresh)
+                  Positioned(
+                    top: 10,
+                    left: 10,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.primary,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: const Text(
+                        'FRESH',
+                        style: TextStyle(
                           fontFamily: 'Poppins',
-                          fontSize: 15,
+                          fontSize: 10,
                           fontWeight: FontWeight.w700,
-                          color: AppColors.primary,
+                          color: Colors.white,
+                          letterSpacing: 0.5,
                         ),
                       ),
-                      if (product.changePercent != null) ...[
-                        const SizedBox(width: 5),
-                        _ChangeChip(percent: product.changePercent!),
-                      ],
-                    ],
-                  ),
-                  const Text(
-                    'Ref: DA Daily Price Watch',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 9.5,
-                      color: Color(0xFFB0B7C3),
-                      fontStyle: FontStyle.italic,
                     ),
                   ),
-                  const Spacer(),
-                  // Add button
-                  GestureDetector(
-                    onTap: onAdd,
-                    child: Container(
-                      width: double.infinity,
-                      height: 34,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF3F4F6),
-                        borderRadius: BorderRadius.circular(8),
+              ],
+            ),
+            // Info section
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      product.name,
+                      style: const TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFF111827),
                       ),
-                      child: Center(
-                        child: Text(
-                          cartQty > 0 ? '+ Add (×$cartQty)' : '+ Add',
-                          style: TextStyle(
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      '${product.unit} • ${product.brand}',
+                      style: const TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 11,
+                        color: Color(0xFF9CA3AF),
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          '₱${product.price.toStringAsFixed(2)}',
+                          style: const TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            color: cartQty > 0
-                                ? AppColors.primary
-                                : const Color(0xFF374151),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.primary,
+                          ),
+                        ),
+                        if (product.changePercent != null) ...[
+                          const SizedBox(width: 5),
+                          _ChangeChip(percent: product.changePercent!),
+                        ],
+                      ],
+                    ),
+                    const Text(
+                      'Ref: DA Daily Price Watch',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 9.5,
+                        color: Color(0xFFB0B7C3),
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    const Spacer(),
+                    // Add button
+                    GestureDetector(
+                      onTap: onAdd,
+                      child: Container(
+                        width: double.infinity,
+                        height: 34,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF3F4F6),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Center(
+                          child: Text(
+                            cartQty > 0 ? '+ Add (×$cartQty)' : '+ Add',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: cartQty > 0
+                                  ? AppColors.primary
+                                  : const Color(0xFF374151),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-    ),   // Container
-  );     // GestureDetector
+          ],
+        ),
+      ), // Container
+    ); // GestureDetector
   } // build
 
   String _getProductEmoji(String name) {

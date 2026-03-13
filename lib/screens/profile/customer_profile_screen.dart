@@ -27,8 +27,10 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -44,8 +46,11 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: const Icon(Icons.edit_outlined,
-                        color: AppColors.primary, size: 22),
+                    icon: const Icon(
+                      Icons.edit_outlined,
+                      color: AppColors.primary,
+                      size: 22,
+                    ),
                   ),
                 ],
               ),
@@ -60,7 +65,9 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                       color: AppColors.white,
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(
-                          vertical: 28, horizontal: 20),
+                        vertical: 28,
+                        horizontal: 20,
+                      ),
                       child: Row(
                         children: [
                           Stack(
@@ -72,12 +79,15 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                                   color: const Color(0xFFE0D6CC),
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                      color: const Color(0xFFBBF7D0),
-                                      width: 3),
+                                    color: const Color(0xFFBBF7D0),
+                                    width: 3,
+                                  ),
                                 ),
                                 child: const Center(
-                                  child: Text('👨‍💼',
-                                      style: TextStyle(fontSize: 40)),
+                                  child: Text(
+                                    '👨‍💼',
+                                    style: TextStyle(fontSize: 40),
+                                  ),
                                 ),
                               ),
                               Positioned(
@@ -90,10 +100,15 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                                     color: AppColors.primary,
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                        color: Colors.white, width: 2),
+                                      color: Colors.white,
+                                      width: 2,
+                                    ),
                                   ),
-                                  child: const Icon(Icons.camera_alt,
-                                      size: 12, color: Colors.white),
+                                  child: const Icon(
+                                    Icons.camera_alt,
+                                    size: 12,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ],
@@ -133,11 +148,12 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                                 const SizedBox(height: 8),
                                 Container(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 4),
+                                    horizontal: 10,
+                                    vertical: 4,
+                                  ),
                                   decoration: BoxDecoration(
                                     color: const Color(0xFFEBF8F1),
-                                    borderRadius:
-                                        BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: const Text(
                                     'Verified Customer',
@@ -183,8 +199,7 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (_) =>
-                                      const OrderHistoryScreen(),
+                                  builder: (_) => const OrderHistoryScreen(),
                                 ),
                               );
                             },
@@ -197,8 +212,7 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (_) =>
-                                      const FavoritesScreen(),
+                                  builder: (_) => const FavoritesScreen(),
                                 ),
                               );
                             },
@@ -268,42 +282,46 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
                                 context: context,
                                 builder: (_) => AlertDialog(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(16)),
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
                                   title: const Text(
                                     'Logout',
                                     style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w700),
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                   content: const Text(
-                                      'Are you sure you want to logout?',
-                                      style: TextStyle(
-                                          fontFamily: 'Poppins')),
+                                    'Are you sure you want to logout?',
+                                    style: TextStyle(fontFamily: 'Poppins'),
+                                  ),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>
                                           Navigator.of(context).pop(),
-                                      child: const Text('Cancel',
-                                          style: TextStyle(
-                                              fontFamily: 'Poppins')),
+                                      child: const Text(
+                                        'Cancel',
+                                        style: TextStyle(fontFamily: 'Poppins'),
+                                      ),
                                     ),
                                     ElevatedButton(
-                                      onPressed: () =>
-                                          Navigator.of(context)
-                                              .popUntil(
-                                                  (r) => r.isFirst),
+                                      onPressed: () => Navigator.of(
+                                        context,
+                                      ).popUntil((r) => r.isFirst),
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: AppColors.error,
                                         foregroundColor: Colors.white,
                                         elevation: 0,
                                         shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8)),
+                                          borderRadius: BorderRadius.circular(
+                                            8,
+                                          ),
+                                        ),
                                       ),
-                                      child: const Text('Logout',
-                                          style: TextStyle(
-                                              fontFamily: 'Poppins')),
+                                      child: const Text(
+                                        'Logout',
+                                        style: TextStyle(fontFamily: 'Poppins'),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -383,8 +401,7 @@ class _StatDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: 1, height: 32, color: const Color(0xFFE5E7EB));
+    return Container(width: 1, height: 32, color: const Color(0xFFE5E7EB));
   }
 }
 
@@ -446,8 +463,7 @@ class _MenuTile extends StatelessWidget {
             ? AppColors.error
             : const Color(0xFF9CA3AF),
       ),
-      contentPadding:
-          const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
     );
   }
 }
@@ -458,6 +474,10 @@ class _TileDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Divider(
-        height: 1, indent: 70, endIndent: 20, color: Color(0xFFF3F4F6));
+      height: 1,
+      indent: 70,
+      endIndent: 20,
+      color: Color(0xFFF3F4F6),
+    );
   }
 }

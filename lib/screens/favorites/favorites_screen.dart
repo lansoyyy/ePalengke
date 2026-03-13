@@ -60,8 +60,10 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -87,11 +89,11 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                       padding: const EdgeInsets.all(16),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 14,
-                        crossAxisSpacing: 14,
-                        childAspectRatio: 0.75,
-                      ),
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 14,
+                            crossAxisSpacing: 14,
+                            childAspectRatio: 0.75,
+                          ),
                       itemCount: _favorites.length,
                       itemBuilder: (context, i) {
                         final idx = _favorites[i];
@@ -102,8 +104,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (_) => ProductDetailsScreen(
-                                    product: product,
-                                    initialIndex: idx),
+                                  product: product,
+                                  initialIndex: idx,
+                                ),
                               ),
                             );
                           },
@@ -131,8 +134,11 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               color: const Color(0xFFFEE2E2),
               borderRadius: BorderRadius.circular(20),
             ),
-            child: const Icon(Icons.favorite_border,
-                size: 40, color: Color(0xFFF87171)),
+            child: const Icon(
+              Icons.favorite_border,
+              size: 40,
+              color: Color(0xFFF87171),
+            ),
           ),
           const SizedBox(height: 18),
           const Text(
@@ -166,7 +172,8 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 foregroundColor: Colors.white,
                 elevation: 0,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
               child: const Text(
                 'Browse Products',
@@ -222,8 +229,9 @@ class _FavoriteCard extends StatelessWidget {
                   height: 130,
                   decoration: BoxDecoration(
                     color: product.imageColor,
-                    borderRadius:
-                        const BorderRadius.vertical(top: Radius.circular(15)),
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(15),
+                    ),
                   ),
                   child: Center(
                     child: Icon(
@@ -251,8 +259,11 @@ class _FavoriteCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: const Icon(Icons.favorite,
-                          size: 16, color: Color(0xFFF87171)),
+                      child: const Icon(
+                        Icons.favorite,
+                        size: 16,
+                        color: Color(0xFFF87171),
+                      ),
                     ),
                   ),
                 ),
@@ -312,7 +323,8 @@ class _FavoriteCard extends StatelessWidget {
                     elevation: 0,
                     padding: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
                   child: const Text(
                     'Add to Cart',

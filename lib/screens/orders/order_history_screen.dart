@@ -4,7 +4,14 @@ import 'order_cancel_screen.dart';
 import '../track/track_screen.dart';
 import '../rating/rate_rider_screen.dart';
 
-enum OrderStatus { pending, confirmed, shopping, delivering, delivered, cancelled }
+enum OrderStatus {
+  pending,
+  confirmed,
+  shopping,
+  delivering,
+  delivered,
+  cancelled,
+}
 
 class CustomerOrder {
   final String id;
@@ -79,12 +86,14 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
     switch (tabIndex) {
       case 1:
         return _mockOrders
-            .where((o) => [
-                  OrderStatus.pending,
-                  OrderStatus.confirmed,
-                  OrderStatus.shopping,
-                  OrderStatus.delivering,
-                ].contains(o.status))
+            .where(
+              (o) => [
+                OrderStatus.pending,
+                OrderStatus.confirmed,
+                OrderStatus.shopping,
+                OrderStatus.delivering,
+              ].contains(o.status),
+            )
             .toList();
       case 2:
         return _mockOrders
@@ -116,8 +125,10 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
                       children: [
                         IconButton(
                           onPressed: () => Navigator.of(context).pop(),
-                          icon: const Icon(Icons.arrow_back,
-                              color: Color(0xFF111827)),
+                          icon: const Icon(
+                            Icons.arrow_back,
+                            color: Color(0xFF111827),
+                          ),
                         ),
                         const Expanded(
                           child: Text(
@@ -138,13 +149,15 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
                   TabBar(
                     controller: _tabController,
                     labelStyle: const TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600),
+                      fontFamily: 'Poppins',
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                    ),
                     unselectedLabelStyle: const TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 13,
-                        fontWeight: FontWeight.w400),
+                      fontFamily: 'Poppins',
+                      fontSize: 13,
+                      fontWeight: FontWeight.w400,
+                    ),
                     labelColor: AppColors.primary,
                     unselectedLabelColor: const Color(0xFF6B7280),
                     indicatorColor: AppColors.primary,
@@ -169,8 +182,11 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.receipt_long_outlined,
-                              size: 60, color: Color(0xFFD1D5DB)),
+                          Icon(
+                            Icons.receipt_long_outlined,
+                            size: 60,
+                            color: Color(0xFFD1D5DB),
+                          ),
                           SizedBox(height: 16),
                           Text(
                             'No orders here',
@@ -189,8 +205,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen>
                     padding: const EdgeInsets.all(16),
                     itemCount: orders.length,
                     separatorBuilder: (_, __) => const SizedBox(height: 12),
-                    itemBuilder: (context, i) =>
-                        _OrderCard(order: orders[i]),
+                    itemBuilder: (context, i) => _OrderCard(order: orders[i]),
                   );
                 },
               ),
@@ -242,11 +257,11 @@ class _OrderCard extends StatelessWidget {
   }
 
   bool get _isActive => [
-        OrderStatus.pending,
-        OrderStatus.confirmed,
-        OrderStatus.shopping,
-        OrderStatus.delivering,
-      ].contains(order.status);
+    OrderStatus.pending,
+    OrderStatus.confirmed,
+    OrderStatus.shopping,
+    OrderStatus.delivering,
+  ].contains(order.status);
 
   @override
   Widget build(BuildContext context) {
@@ -256,10 +271,7 @@ class _OrderCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
-            blurRadius: 8,
-          ),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 8),
         ],
       ),
       child: Column(
@@ -278,8 +290,10 @@ class _OrderCard extends StatelessWidget {
                 ),
               ),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: _statusColor.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
@@ -341,7 +355,8 @@ class _OrderCard extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                              builder: (_) => const TrackScreen()),
+                            builder: (_) => const TrackScreen(),
+                          ),
                         );
                       },
                     ),
@@ -379,8 +394,10 @@ class _OrderCard extends StatelessWidget {
                       onTap: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Items added to cart!',
-                                style: TextStyle(fontFamily: 'Poppins')),
+                            content: Text(
+                              'Items added to cart!',
+                              style: TextStyle(fontFamily: 'Poppins'),
+                            ),
                             backgroundColor: AppColors.primary,
                             behavior: SnackBarBehavior.floating,
                           ),
@@ -403,11 +420,12 @@ class _ActionButton extends StatelessWidget {
   final VoidCallback onTap;
   final bool isSecondary;
   final bool isDanger;
-  const _ActionButton(
-      {required this.label,
-      required this.onTap,
-      this.isSecondary = false,
-      this.isDanger = false});
+  const _ActionButton({
+    required this.label,
+    required this.onTap,
+    this.isSecondary = false,
+    this.isDanger = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -427,8 +445,7 @@ class _ActionButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         decoration: BoxDecoration(
           color: bg,
           borderRadius: BorderRadius.circular(8),

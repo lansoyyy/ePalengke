@@ -9,8 +9,7 @@ class AddressManagementScreen extends StatefulWidget {
       _AddressManagementScreenState();
 }
 
-class _AddressManagementScreenState
-    extends State<AddressManagementScreen> {
+class _AddressManagementScreenState extends State<AddressManagementScreen> {
   final List<_AddressData> _addresses = [
     _AddressData(
       id: 'addr_1',
@@ -50,8 +49,10 @@ class _AddressManagementScreenState
     setState(() => _addresses.removeWhere((a) => a.id == id));
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('Address deleted.',
-            style: TextStyle(fontFamily: 'Poppins')),
+        content: Text(
+          'Address deleted.',
+          style: TextStyle(fontFamily: 'Poppins'),
+        ),
         behavior: SnackBarBehavior.floating,
         backgroundColor: Color(0xFF374151),
       ),
@@ -96,8 +97,10 @@ class _AddressManagementScreenState
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -137,7 +140,8 @@ class _AddressManagementScreenState
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: AppColors.primary),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
               ),
@@ -158,15 +162,13 @@ class _AddressManagementScreenState
                   : ListView.separated(
                       padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                       itemCount: _addresses.length,
-                      separatorBuilder: (_, __) =>
-                          const SizedBox(height: 12),
+                      separatorBuilder: (_, __) => const SizedBox(height: 12),
                       itemBuilder: (context, i) {
                         final addr = _addresses[i];
                         return _AddressCard(
                           address: addr,
                           onSetDefault: () => _setDefault(addr.id),
-                          onEdit: () =>
-                              _showAddressForm(existing: addr),
+                          onEdit: () => _showAddressForm(existing: addr),
                           onDelete: () => _deleteAddress(addr.id),
                         );
                       },
@@ -232,10 +234,7 @@ class _AddressCard extends StatelessWidget {
             ? Border.all(color: AppColors.primary, width: 2)
             : null,
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
-            blurRadius: 6,
-          ),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 6),
         ],
       ),
       child: Column(
@@ -245,7 +244,9 @@ class _AddressCard extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 10, vertical: 4),
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: address.isDefault
                       ? AppColors.primary
@@ -266,8 +267,11 @@ class _AddressCard extends StatelessWidget {
               ),
               if (address.isDefault) ...[
                 const SizedBox(width: 8),
-                const Icon(Icons.check_circle,
-                    size: 16, color: AppColors.primary),
+                const Icon(
+                  Icons.check_circle,
+                  size: 16,
+                  color: AppColors.primary,
+                ),
                 const SizedBox(width: 4),
                 const Text(
                   'Default',
@@ -298,24 +302,34 @@ class _AddressCard extends StatelessWidget {
                   if (!address.isDefault)
                     const PopupMenuItem(
                       value: 'default',
-                      child: Text('Set as Default',
-                          style: TextStyle(fontFamily: 'Poppins')),
+                      child: Text(
+                        'Set as Default',
+                        style: TextStyle(fontFamily: 'Poppins'),
+                      ),
                     ),
                   const PopupMenuItem(
                     value: 'edit',
-                    child: Text('Edit',
-                        style: TextStyle(fontFamily: 'Poppins')),
+                    child: Text(
+                      'Edit',
+                      style: TextStyle(fontFamily: 'Poppins'),
+                    ),
                   ),
                   const PopupMenuItem(
                     value: 'delete',
-                    child: Text('Delete',
-                        style: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: AppColors.error)),
+                    child: Text(
+                      'Delete',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        color: AppColors.error,
+                      ),
+                    ),
                   ),
                 ],
-                icon: const Icon(Icons.more_vert,
-                    color: Color(0xFF9CA3AF), size: 20),
+                icon: const Icon(
+                  Icons.more_vert,
+                  color: Color(0xFF9CA3AF),
+                  size: 20,
+                ),
               ),
             ],
           ),
@@ -352,8 +366,11 @@ class _AddressCard extends StatelessWidget {
             const SizedBox(height: 6),
             Row(
               children: [
-                const Icon(Icons.info_outline,
-                    size: 13, color: Color(0xFF9CA3AF)),
+                const Icon(
+                  Icons.info_outline,
+                  size: 13,
+                  color: Color(0xFF9CA3AF),
+                ),
                 const SizedBox(width: 4),
                 Expanded(
                   child: Text(
@@ -422,7 +439,7 @@ class _AddressFormSheetState extends State<_AddressFormSheet> {
       _cityCtrl,
       _provinceCtrl,
       _postalCtrl,
-      _notesCtrl
+      _notesCtrl,
     ]) {
       c.dispose();
     }
@@ -431,7 +448,8 @@ class _AddressFormSheetState extends State<_AddressFormSheet> {
 
   void _save() {
     final addr = _AddressData(
-      id: widget.existing?.id ??
+      id:
+          widget.existing?.id ??
           'addr_${DateTime.now().millisecondsSinceEpoch}',
       label: _labelCtrl.text.isEmpty ? 'Home' : _labelCtrl.text,
       recipientName: _nameCtrl.text,
@@ -462,9 +480,7 @@ class _AddressFormSheetState extends State<_AddressFormSheet> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  widget.existing == null
-                      ? 'Add New Address'
-                      : 'Edit Address',
+                  widget.existing == null ? 'Add New Address' : 'Edit Address',
                   style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 17,
@@ -482,27 +498,32 @@ class _AddressFormSheetState extends State<_AddressFormSheet> {
             _FormField(label: 'Label (e.g. Home, Work)', ctrl: _labelCtrl),
             _FormField(label: 'Recipient Name', ctrl: _nameCtrl),
             _FormField(
-                label: 'Phone Number',
-                ctrl: _phoneCtrl,
-                inputType: TextInputType.phone),
+              label: 'Phone Number',
+              ctrl: _phoneCtrl,
+              inputType: TextInputType.phone,
+            ),
             _FormField(label: 'Street Address', ctrl: _line1Ctrl),
             Row(
               children: [
-                Expanded(child: _FormField(label: 'City', ctrl: _cityCtrl)),
+                Expanded(
+                  child: _FormField(label: 'City', ctrl: _cityCtrl),
+                ),
                 const SizedBox(width: 10),
                 Expanded(
-                    child:
-                        _FormField(label: 'Province', ctrl: _provinceCtrl)),
+                  child: _FormField(label: 'Province', ctrl: _provinceCtrl),
+                ),
               ],
             ),
             _FormField(
-                label: 'Postal Code',
-                ctrl: _postalCtrl,
-                inputType: TextInputType.number),
+              label: 'Postal Code',
+              ctrl: _postalCtrl,
+              inputType: TextInputType.number,
+            ),
             _FormField(
-                label: 'Delivery Notes (optional)',
-                ctrl: _notesCtrl,
-                maxLines: 2),
+              label: 'Delivery Notes (optional)',
+              ctrl: _notesCtrl,
+              maxLines: 2,
+            ),
             const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
@@ -514,7 +535,8 @@ class _AddressFormSheetState extends State<_AddressFormSheet> {
                   foregroundColor: Colors.white,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
                 child: const Text(
                   'Save Address',
@@ -576,16 +598,16 @@ class _FormField extends StatelessWidget {
               fillColor: const Color(0xFFF9FAFB),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide:
-                    const BorderSide(color: Color(0xFFE5E7EB)),
+                borderSide: const BorderSide(color: Color(0xFFE5E7EB)),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide:
-                    const BorderSide(color: Color(0xFFE5E7EB)),
+                borderSide: const BorderSide(color: Color(0xFFE5E7EB)),
               ),
               contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 14, vertical: 12),
+                horizontal: 14,
+                vertical: 12,
+              ),
             ),
           ),
         ],

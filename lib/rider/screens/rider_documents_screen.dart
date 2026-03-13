@@ -5,8 +5,7 @@ class RiderDocumentsScreen extends StatefulWidget {
   const RiderDocumentsScreen({super.key});
 
   @override
-  State<RiderDocumentsScreen> createState() =>
-      _RiderDocumentsScreenState();
+  State<RiderDocumentsScreen> createState() => _RiderDocumentsScreenState();
 }
 
 class _RiderDocumentsScreenState extends State<RiderDocumentsScreen> {
@@ -70,8 +69,10 @@ class _RiderDocumentsScreenState extends State<RiderDocumentsScreen> {
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -115,8 +116,7 @@ class _RiderDocumentsScreenState extends State<RiderDocumentsScreen> {
                             children: [
                               Expanded(
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Verification Progress',
@@ -164,16 +164,20 @@ class _RiderDocumentsScreenState extends State<RiderDocumentsScreen> {
                             const SizedBox(height: 10),
                             Container(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 6),
+                                horizontal: 10,
+                                vertical: 6,
+                              ),
                               decoration: BoxDecoration(
                                 color: const Color(0xFFFFF7ED),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Row(
                                 children: [
-                                  const Icon(Icons.hourglass_top,
-                                      size: 14,
-                                      color: Color(0xFFF59E0B)),
+                                  const Icon(
+                                    Icons.hourglass_top,
+                                    size: 14,
+                                    color: Color(0xFFF59E0B),
+                                  ),
                                   const SizedBox(width: 6),
                                   Text(
                                     '$_pendingCount document(s) under review',
@@ -211,8 +215,7 @@ class _RiderDocumentsScreenState extends State<RiderDocumentsScreen> {
                               SnackBar(
                                 content: Text(
                                   '${_documents[i].title} uploaded.',
-                                  style: const TextStyle(
-                                      fontFamily: 'Poppins'),
+                                  style: const TextStyle(fontFamily: 'Poppins'),
                                 ),
                                 behavior: SnackBarBehavior.floating,
                                 backgroundColor: AppColors.primary,
@@ -230,13 +233,18 @@ class _RiderDocumentsScreenState extends State<RiderDocumentsScreen> {
                         color: const Color(0xFFEFF6FF),
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                            color: const Color(0xFFBFDBFE), width: 1),
+                          color: const Color(0xFFBFDBFE),
+                          width: 1,
+                        ),
                       ),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
-                          Icon(Icons.info_outline,
-                              size: 16, color: Color(0xFF3B82F6)),
+                          Icon(
+                            Icons.info_outline,
+                            size: 16,
+                            color: Color(0xFF3B82F6),
+                          ),
                           SizedBox(width: 8),
                           Expanded(
                             child: Text(
@@ -280,10 +288,7 @@ class _DocumentCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.04),
-            blurRadius: 6,
-          ),
+          BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 6),
         ],
         border: doc.status == _DocStatus.rejected
             ? Border.all(color: AppColors.error.withValues(alpha: 0.4))
@@ -329,8 +334,7 @@ class _DocumentCard extends StatelessWidget {
                 ),
               ),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
                   color: badge.bgColor,
                   borderRadius: BorderRadius.circular(6),
@@ -351,8 +355,11 @@ class _DocumentCard extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                const Icon(Icons.access_time,
-                    size: 12, color: Color(0xFF9CA3AF)),
+                const Icon(
+                  Icons.access_time,
+                  size: 12,
+                  color: Color(0xFF9CA3AF),
+                ),
                 const SizedBox(width: 4),
                 Text(
                   'Uploaded: ${doc.uploadedAt}',
@@ -377,8 +384,11 @@ class _DocumentCard extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(Icons.warning_amber_rounded,
-                      size: 14, color: AppColors.error),
+                  const Icon(
+                    Icons.warning_amber_rounded,
+                    size: 14,
+                    color: AppColors.error,
+                  ),
                   const SizedBox(width: 6),
                   Expanded(
                     child: Text(
@@ -421,7 +431,8 @@ class _DocumentCard extends StatelessWidget {
                   foregroundColor: Colors.white,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
               ),
             ),

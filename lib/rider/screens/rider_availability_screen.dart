@@ -9,8 +9,7 @@ class RiderAvailabilityScreen extends StatefulWidget {
       _RiderAvailabilityScreenState();
 }
 
-class _RiderAvailabilityScreenState
-    extends State<RiderAvailabilityScreen> {
+class _RiderAvailabilityScreenState extends State<RiderAvailabilityScreen> {
   bool _isOnline = true;
   bool _autoAccept = false;
   bool _onlyNearby = true;
@@ -29,12 +28,15 @@ class _RiderAvailabilityScreenState
       showDialog(
         context: context,
         builder: (_) => AlertDialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
           title: const Text(
             'Go Offline?',
             style: TextStyle(
-                fontFamily: 'Poppins', fontWeight: FontWeight.w700),
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w700,
+            ),
           ),
           content: const Text(
             'You won\'t receive new job requests while offline. Active deliveries will not be affected.',
@@ -43,8 +45,10 @@ class _RiderAvailabilityScreenState
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancel',
-                  style: TextStyle(fontFamily: 'Poppins')),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(fontFamily: 'Poppins'),
+              ),
             ),
             ElevatedButton(
               onPressed: () {
@@ -56,10 +60,13 @@ class _RiderAvailabilityScreenState
                 foregroundColor: Colors.white,
                 elevation: 0,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
+                  borderRadius: BorderRadius.circular(8),
+                ),
               ),
-              child: const Text('Go Offline',
-                  style: TextStyle(fontFamily: 'Poppins')),
+              child: const Text(
+                'Go Offline',
+                style: TextStyle(fontFamily: 'Poppins'),
+              ),
             ),
           ],
         ),
@@ -84,8 +91,10 @@ class _RiderAvailabilityScreenState
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -107,7 +116,9 @@ class _RiderAvailabilityScreenState
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 16, vertical: 20),
+                  horizontal: 16,
+                  vertical: 20,
+                ),
                 child: Column(
                   children: [
                     // ── Status toggle ──────────────────────────────────────
@@ -140,10 +151,11 @@ class _RiderAvailabilityScreenState
                                 shape: BoxShape.circle,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: (_isOnline
-                                            ? AppColors.primary
-                                            : AppColors.error)
-                                        .withValues(alpha: 0.35),
+                                    color:
+                                        (_isOnline
+                                                ? AppColors.primary
+                                                : AppColors.error)
+                                            .withValues(alpha: 0.35),
                                     blurRadius: 20,
                                     spreadRadius: 4,
                                   ),
@@ -183,12 +195,13 @@ class _RiderAvailabilityScreenState
                             if (_isOnline) ...[
                               const SizedBox(height: 12),
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Icon(Icons.access_time,
-                                      size: 14,
-                                      color: AppColors.primary),
+                                  const Icon(
+                                    Icons.access_time,
+                                    size: 14,
+                                    color: AppColors.primary,
+                                  ),
                                   const SizedBox(width: 4),
                                   Text(
                                     'Online since $_onlineSince  ·  $_hoursOnline',
@@ -248,8 +261,7 @@ class _RiderAvailabilityScreenState
                               ),
                               const SizedBox(width: 10),
                               _StatBox(
-                                value:
-                                    '${_acceptanceRate.toStringAsFixed(0)}%',
+                                value: '${_acceptanceRate.toStringAsFixed(0)}%',
                                 label: 'Acceptance\nRate',
                                 color: _acceptanceRate >= 80
                                     ? AppColors.primary
@@ -277,24 +289,21 @@ class _RiderAvailabilityScreenState
                         children: [
                           _ToggleRow(
                             title: 'Auto-Accept Jobs',
-                            subtitle:
-                                'Automatically accept new job requests',
+                            subtitle: 'Automatically accept new job requests',
                             value: _autoAccept,
-                            onChanged: (v) =>
-                                setState(() => _autoAccept = v),
+                            onChanged: (v) => setState(() => _autoAccept = v),
                           ),
                           const Divider(
-                              height: 1,
-                              indent: 16,
-                              endIndent: 16,
-                              color: Color(0xFFF3F4F6)),
+                            height: 1,
+                            indent: 16,
+                            endIndent: 16,
+                            color: Color(0xFFF3F4F6),
+                          ),
                           _ToggleRow(
                             title: 'Nearby Jobs Only',
-                            subtitle:
-                                'Only show jobs within your 5 km radius',
+                            subtitle: 'Only show jobs within your 5 km radius',
                             value: _onlyNearby,
-                            onChanged: (v) =>
-                                setState(() => _onlyNearby = v),
+                            onChanged: (v) => setState(() => _onlyNearby = v),
                           ),
                         ],
                       ),
@@ -307,18 +316,22 @@ class _RiderAvailabilityScreenState
                         color: const Color(0xFFFFF7ED),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                            color: const Color(0xFFFDE68A), width: 1),
+                          color: const Color(0xFFFDE68A),
+                          width: 1,
+                        ),
                       ),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(Icons.info_outline,
-                              size: 18, color: Color(0xFFF59E0B)),
+                          const Icon(
+                            Icons.info_outline,
+                            size: 18,
+                            color: Color(0xFFF59E0B),
+                          ),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Column(
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
                                   'Maintain High Acceptance Rate',
@@ -360,8 +373,11 @@ class _StatBox extends StatelessWidget {
   final String value;
   final String label;
   final Color color;
-  const _StatBox(
-      {required this.value, required this.label, required this.color});
+  const _StatBox({
+    required this.value,
+    required this.label,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {

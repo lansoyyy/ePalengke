@@ -9,8 +9,7 @@ class RiderRateCustomerScreen extends StatefulWidget {
       _RiderRateCustomerScreenState();
 }
 
-class _RiderRateCustomerScreenState
-    extends State<RiderRateCustomerScreen> {
+class _RiderRateCustomerScreenState extends State<RiderRateCustomerScreen> {
   int _overallRating = 0;
   final Map<String, int> _categoryRatings = {
     'Communication': 0,
@@ -42,15 +41,17 @@ class _RiderRateCustomerScreenState
     'Fair',
     'Good',
     'Great',
-    'Excellent!'
+    'Excellent!',
   ];
 
   void _submit() {
     if (_overallRating == 0) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Please select an overall rating.',
-              style: TextStyle(fontFamily: 'Poppins')),
+          content: Text(
+            'Please select an overall rating.',
+            style: TextStyle(fontFamily: 'Poppins'),
+          ),
           behavior: SnackBarBehavior.floating,
           backgroundColor: AppColors.error,
         ),
@@ -105,7 +106,8 @@ class _RiderRateCustomerScreenState
                         foregroundColor: Colors.white,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
                       child: const Text(
                         'Back to Jobs',
@@ -138,8 +140,10 @@ class _RiderRateCustomerScreenState
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -196,14 +200,12 @@ class _RiderRateCustomerScreenState
                               shape: BoxShape.circle,
                             ),
                             child: const Center(
-                              child: Text('👩',
-                                  style: TextStyle(fontSize: 28)),
+                              child: Text('👩', style: TextStyle(fontSize: 28)),
                             ),
                           ),
                           const SizedBox(width: 14),
                           Column(
-                            crossAxisAlignment:
-                                CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
                               Text(
                                 'Maria Santos',
@@ -256,16 +258,16 @@ class _RiderRateCustomerScreenState
                           ),
                           const SizedBox(height: 16),
                           Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: List.generate(5, (i) {
                               final starIdx = i + 1;
                               return GestureDetector(
-                                onTap: () => setState(
-                                    () => _overallRating = starIdx),
+                                onTap: () =>
+                                    setState(() => _overallRating = starIdx),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 6),
+                                    horizontal: 6,
+                                  ),
                                   child: Icon(
                                     starIdx <= _overallRating
                                         ? Icons.star
@@ -282,9 +284,7 @@ class _RiderRateCustomerScreenState
                             opacity: _overallRating > 0 ? 1.0 : 0.0,
                             duration: const Duration(milliseconds: 200),
                             child: Text(
-                              _overallRating > 0
-                                  ? _labels[_overallRating]
-                                  : '',
+                              _overallRating > 0 ? _labels[_overallRating] : '',
                               style: const TextStyle(
                                 fontFamily: 'Poppins',
                                 fontSize: 14,
@@ -326,8 +326,7 @@ class _RiderRateCustomerScreenState
                           ..._categoryRatings.keys.map((cat) {
                             final rating = _categoryRatings[cat]!;
                             return Padding(
-                              padding:
-                                  const EdgeInsets.only(bottom: 14),
+                              padding: const EdgeInsets.only(bottom: 14),
                               child: Row(
                                 children: [
                                   SizedBox(
@@ -345,8 +344,9 @@ class _RiderRateCustomerScreenState
                                     children: List.generate(5, (i) {
                                       final s = i + 1;
                                       return GestureDetector(
-                                        onTap: () => setState(() =>
-                                            _categoryRatings[cat] = s),
+                                        onTap: () => setState(
+                                          () => _categoryRatings[cat] = s,
+                                        ),
                                         child: Icon(
                                           s <= rating
                                               ? Icons.star
@@ -409,16 +409,16 @@ class _RiderRateCustomerScreenState
                               filled: true,
                               fillColor: const Color(0xFFF9FAFB),
                               border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: const BorderSide(
-                                    color: Color(0xFFE5E7EB)),
+                                  color: Color(0xFFE5E7EB),
+                                ),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(10),
                                 borderSide: const BorderSide(
-                                    color: Color(0xFFE5E7EB)),
+                                  color: Color(0xFFE5E7EB),
+                                ),
                               ),
                               contentPadding: const EdgeInsets.all(14),
                             ),
@@ -443,8 +443,7 @@ class _RiderRateCustomerScreenState
                         children: [
                           SwitchListTile(
                             value: _reportIssue,
-                            onChanged: (v) =>
-                                setState(() => _reportIssue = v),
+                            onChanged: (v) => setState(() => _reportIssue = v),
                             activeColor: AppColors.error,
                             title: const Text(
                               'Report an Issue',
@@ -465,14 +464,13 @@ class _RiderRateCustomerScreenState
                             ),
                           ),
                           if (_reportIssue) ...[
-                            const Divider(
-                                height: 1, color: Color(0xFFF3F4F6)),
+                            const Divider(height: 1, color: Color(0xFFF3F4F6)),
                             ..._issues.map((issue) {
                               return RadioListTile<String>(
                                 value: issue,
                                 groupValue: _selectedIssue,
-                                onChanged: (v) => setState(
-                                    () => _selectedIssue = v),
+                                onChanged: (v) =>
+                                    setState(() => _selectedIssue = v),
                                 activeColor: AppColors.error,
                                 title: Text(
                                   issue,
@@ -499,7 +497,8 @@ class _RiderRateCustomerScreenState
                           foregroundColor: Colors.white,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
                         child: const Text(
                           'Submit Rating',

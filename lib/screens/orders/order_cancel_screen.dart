@@ -11,8 +11,7 @@ class OrderCancelScreen extends StatefulWidget {
 
 class _OrderCancelScreenState extends State<OrderCancelScreen> {
   int _selectedReason = -1;
-  final TextEditingController _customReasonController =
-      TextEditingController();
+  final TextEditingController _customReasonController = TextEditingController();
 
   static const _reasons = [
     'I ordered by mistake',
@@ -56,10 +55,7 @@ class _OrderCancelScreenState extends State<OrderCancelScreen> {
             onPressed: () => Navigator.of(context).pop(),
             child: const Text(
               'Go Back',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                color: Color(0xFF6B7280),
-              ),
+              style: TextStyle(fontFamily: 'Poppins', color: Color(0xFF6B7280)),
             ),
           ),
           ElevatedButton(
@@ -75,7 +71,8 @@ class _OrderCancelScreenState extends State<OrderCancelScreen> {
                   backgroundColor: AppColors.error,
                   behavior: SnackBarBehavior.floating,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
               );
             },
@@ -84,11 +81,15 @@ class _OrderCancelScreenState extends State<OrderCancelScreen> {
               foregroundColor: Colors.white,
               elevation: 0,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
             child: const Text(
               'Cancel Order',
-              style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600),
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],
@@ -110,8 +111,10 @@ class _OrderCancelScreenState extends State<OrderCancelScreen> {
                 children: [
                   IconButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back,
-                        color: Color(0xFF111827)),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Color(0xFF111827),
+                    ),
                   ),
                   const Expanded(
                     child: Text(
@@ -146,8 +149,11 @@ class _OrderCancelScreenState extends State<OrderCancelScreen> {
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.warning_amber_rounded,
-                              color: AppColors.warning, size: 22),
+                          const Icon(
+                            Icons.warning_amber_rounded,
+                            color: AppColors.warning,
+                            size: 22,
+                          ),
                           const SizedBox(width: 10),
                           Expanded(
                             child: Column(
@@ -190,55 +196,56 @@ class _OrderCancelScreenState extends State<OrderCancelScreen> {
                     ),
                     const SizedBox(height: 12),
                     ..._reasons.asMap().entries.map(
-                          (entry) => GestureDetector(
-                            onTap: () =>
-                                setState(() => _selectedReason = entry.key),
-                            child: Container(
-                              margin: const EdgeInsets.only(bottom: 10),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 14),
-                              decoration: BoxDecoration(
-                                color: _selectedReason == entry.key
-                                    ? const Color(0xFFFEF2F2)
-                                    : const Color(0xFFF9FAFB),
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: _selectedReason == entry.key
-                                      ? AppColors.error
-                                      : const Color(0xFFE5E7EB),
-                                ),
-                              ),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    _selectedReason == entry.key
-                                        ? Icons.radio_button_checked
-                                        : Icons.radio_button_off,
-                                    size: 20,
-                                    color: _selectedReason == entry.key
-                                        ? AppColors.error
-                                        : const Color(0xFF9CA3AF),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  Text(
-                                    entry.value,
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 14,
-                                      fontWeight:
-                                          _selectedReason == entry.key
-                                              ? FontWeight.w600
-                                              : FontWeight.w400,
-                                      color: _selectedReason == entry.key
-                                          ? const Color(0xFF991B1B)
-                                          : const Color(0xFF374151),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                      (entry) => GestureDetector(
+                        onTap: () =>
+                            setState(() => _selectedReason = entry.key),
+                        child: Container(
+                          margin: const EdgeInsets.only(bottom: 10),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 14,
+                          ),
+                          decoration: BoxDecoration(
+                            color: _selectedReason == entry.key
+                                ? const Color(0xFFFEF2F2)
+                                : const Color(0xFFF9FAFB),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: _selectedReason == entry.key
+                                  ? AppColors.error
+                                  : const Color(0xFFE5E7EB),
                             ),
                           ),
+                          child: Row(
+                            children: [
+                              Icon(
+                                _selectedReason == entry.key
+                                    ? Icons.radio_button_checked
+                                    : Icons.radio_button_off,
+                                size: 20,
+                                color: _selectedReason == entry.key
+                                    ? AppColors.error
+                                    : const Color(0xFF9CA3AF),
+                              ),
+                              const SizedBox(width: 12),
+                              Text(
+                                entry.value,
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14,
+                                  fontWeight: _selectedReason == entry.key
+                                      ? FontWeight.w600
+                                      : FontWeight.w400,
+                                  color: _selectedReason == entry.key
+                                      ? const Color(0xFF991B1B)
+                                      : const Color(0xFF374151),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
+                      ),
+                    ),
                     // Custom reason input
                     if (_selectedReason == _reasons.length - 1) ...[
                       const SizedBox(height: 4),
@@ -263,12 +270,14 @@ class _OrderCancelScreenState extends State<OrderCancelScreen> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: const BorderSide(
-                                color: Color(0xFFE5E7EB)),
+                              color: Color(0xFFE5E7EB),
+                            ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: const BorderSide(
-                                color: Color(0xFFE5E7EB)),
+                              color: Color(0xFFE5E7EB),
+                            ),
                           ),
                           contentPadding: const EdgeInsets.all(14),
                         ),
@@ -328,7 +337,8 @@ class _OrderCancelScreenState extends State<OrderCancelScreen> {
                         style: OutlinedButton.styleFrom(
                           side: const BorderSide(color: Color(0xFFE5E7EB)),
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
                         child: const Text(
                           'Go Back',
@@ -354,7 +364,8 @@ class _OrderCancelScreenState extends State<OrderCancelScreen> {
                           foregroundColor: Colors.white,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
                         child: const Text(
                           'Confirm Cancellation',

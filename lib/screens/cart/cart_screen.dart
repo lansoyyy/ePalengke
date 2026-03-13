@@ -272,9 +272,7 @@ class _CartScreenState extends State<CartScreen> {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) => CheckoutScreen(
-                          cartItems: _items,
-                        ),
+                        builder: (_) => CheckoutScreen(cartItems: _items),
                       ),
                     );
                   },
